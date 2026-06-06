@@ -1,0 +1,464 @@
+<style>
+  /* ── BARRA SUPERIOR ── */
+  .promo-strip {
+    background: #00C2B3;
+    padding: 13px 5%;
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; flex-wrap: wrap; text-align: center;
+  }
+  .promo-strip p {
+    color: #fff; font-size: 14px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px; margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .promo-strip strong { font-size: 15px; font-weight: 800; }
+  .promo-strip a {
+    background: #fff; color: #00C2B3;
+    padding: 8px 22px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none; white-space: nowrap; transition: all .3s;
+  }
+  .promo-strip a:hover { background: #0A0A0A; color: #fff; }
+
+  /* ── SECCIÓN OFERTA ── */
+  .oferta {
+    background: #0A0A0A;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .oferta::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(0,194,179,.04);
+    pointer-events: none;
+  }
+
+  .oferta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Imagen */
+  .oferta-img-col {
+    position: relative;
+    overflow: hidden;
+    min-height: 540px;
+  }
+  .oferta-img-col img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    transition: transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  .oferta-img-col:hover img { transform: scale(1.04); }
+  .oferta-img-col::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to right,
+      transparent 55%,
+      rgba(10,10,10,.6) 80%,
+      rgba(10,10,10,1) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Badge sobre imagen */
+  .oferta-img-badge {
+    position: absolute;
+    top: 24px; left: 24px;
+    z-index: 10;
+    background: rgba(255,255,255,.96);
+    border-radius: 2px;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 9px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.18);
+  }
+  .oferta-img-badge-icon {
+    width: 34px; height: 34px;
+    background: rgba(0,194,179,.1);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; color: #00C2B3; flex-shrink: 0;
+  }
+  .oferta-img-badge-t {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; color: #111; line-height: 1.2;
+  }
+  .oferta-img-badge-s {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; color: #888;
+  }
+
+  /* Tag stock */
+  .oferta-stock-tag {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    z-index: 10;
+    background: #ff4444;
+    color: #fff;
+    border-radius: 2px;
+    padding: 8px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 7px;
+    box-shadow: 0 4px 16px rgba(255,68,68,.4);
+    animation: stockPulse 2s ease-in-out infinite;
+  }
+  @keyframes stockPulse {
+    0%,100%{ box-shadow: 0 4px 16px rgba(255,68,68,.4); }
+    50%    { box-shadow: 0 4px 28px rgba(255,68,68,.7); }
+  }
+  .stock-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    animation: blink 1.2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes blink {
+    0%,100%{ opacity:1; } 50%{ opacity:.3; }
+  }
+
+  /* Contenido derecho */
+  .oferta-content {
+    padding: 56px 6% 56px 5%;
+    display: flex; flex-direction: column;
+    justify-content: center; gap: 20px;
+  }
+
+  .oferta-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(0,194,179,.1);
+    border: 1px solid rgba(0,194,179,.25);
+    color: #00C2B3;
+    padding: 6px 14px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .oferta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.2vw, 44px);
+    font-weight: 600; color: #fff; line-height: 1.1;
+    margin: 0; letter-spacing: -.3px;
+  }
+  .oferta-title span { color: #00C2B3; font-style: italic; }
+
+  /* Caja de precios */
+  .price-box {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(0,194,179,.2);
+    border-radius: 2px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .price-original {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .price-original .lbl {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+  .price-original .amt {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px; font-weight: 500;
+    color: rgba(255,255,255,.35);
+    text-decoration: line-through;
+  }
+  .price-oferta-row {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  }
+  .price-oferta-row .lbl {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+  .price-oferta-row .amt {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 50px);
+    font-weight: 600; color: #fff; line-height: 1;
+  }
+  .badge-off {
+    background: #00C2B3;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 800;
+    padding: 6px 12px; border-radius: 2px;
+    letter-spacing: .5px;
+  }
+  .price-sep { height: 1px; background: rgba(0,194,179,.12); }
+  .price-envio {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,.65);
+    letter-spacing: .3px;
+  }
+  .price-envio i { color: #00C2B3; font-size: 13px; }
+  .price-envio strong { color: #fff; font-weight: 700; }
+
+  /* Lista includes */
+  .oferta-includes {
+    display: flex; flex-direction: column; gap: 11px;
+    list-style: none; margin: 0; padding: 0;
+  }
+  .oferta-includes li {
+    display: flex; align-items: center; gap: 11px;
+    color: rgba(255,255,255,.85);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 400;
+  }
+  .oferta-includes li .check-icon {
+    width: 22px; height: 22px;
+    background: rgba(0,194,179,.12);
+    border: 1px solid rgba(0,194,179,.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .oferta-includes li .check-icon i { color: #00C2B3; font-size: 9px; }
+  .oferta-includes li .gift-icon {
+    width: 22px; height: 22px;
+    background: rgba(255,215,0,.12);
+    border: 1px solid rgba(255,215,0,.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .oferta-includes li .gift-icon i { color: #FFD700; font-size: 9px; }
+  .oferta-includes li strong { color: #fff; font-weight: 600; }
+
+  /* Botón principal */
+  .btn-oferta-main {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: #00C2B3; color: #fff;
+    padding: 17px 34px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration: none;
+    transition: all .3s; width: fit-content;
+    position: relative; overflow: hidden;
+  }
+  .btn-oferta-main::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: #0A0A0A;
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+  }
+  .btn-oferta-main:hover::before { transform: translateX(0); }
+  .btn-oferta-main span, .btn-oferta-main i { position: relative; z-index: 1; }
+
+  /* Urgencia */
+  .urgencia-box {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,68,68,.08);
+    border: 1px solid rgba(255,68,68,.2);
+    border-radius: 2px; padding: 12px 16px;
+  }
+  .urgencia-box i { color: #ff6b6b; font-size: 14px; flex-shrink: 0; }
+  .urgencia-box p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,.75); margin: 0; line-height: 1.5;
+  }
+  .urgencia-box p strong { color: #ff6b6b; font-weight: 700; }
+
+  /* Separador */
+  .oferta-sep { height: 1px; background: rgba(255,255,255,.07); }
+
+  /* Caja contacto */
+  .oferta-contact-box {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(0,194,179,.15);
+    border-radius: 2px; padding: 22px 24px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .oferta-phone-wrap .lbl {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,.35); margin-bottom: 4px;
+  }
+  .oferta-phone-wrap .phone {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; color: #00C2B3; line-height: 1;
+  }
+  .oferta-phone-wrap .sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; color: rgba(255,255,255,.3); margin-top: 3px;
+    letter-spacing: .5px;
+  }
+  .btn-oferta-wsp {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,194,179,.12);
+    border: 1px solid rgba(0,194,179,.3);
+    color: #00C2B3;
+    padding: 12px 20px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none; transition: all .3s; white-space: nowrap;
+  }
+  .btn-oferta-wsp:hover { background: #00C2B3; color: #fff; }
+
+  /* Responsive */
+  @media(max-width:860px) {
+    .oferta-grid { grid-template-columns: 1fr; }
+    .oferta-img-col { min-height: unset; }
+    .oferta-img-col img { object-fit: contain; background: #0A0A0A; }
+    .oferta-img-col::after {
+      background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,.9) 80%, rgba(10,10,10,1) 100%);
+    }
+    .oferta-content { padding: 40px 5% 50px; }
+    .oferta-contact-box { flex-direction: column; align-items: flex-start; }
+  }
+  @media(max-width:480px) {
+    .oferta-title { font-size: 26px; }
+    .price-oferta-row .amt { font-size: 38px; }
+    .btn-oferta-main { width: 100%; justify-content: center; }
+    .btn-oferta-wsp  { width: 100%; justify-content: center; }
+    .oferta-contact-box { padding: 16px 18px; }
+  }
+</style>
+
+<!-- BARRA SUPERIOR -->
+<div class="promo-strip">
+  <p>
+    <i class="fas fa-truck"></i>
+    <strong>ENVÍO GRATIS</strong> a todo Chile · Pagas al recibir
+  </p>
+  <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20aprovechar%20la%20oferta">
+    <i class="fab fa-whatsapp"></i> Quiero esta oferta
+  </a>
+</div>
+
+<!-- SECCIÓN OFERTA -->
+<section class="oferta" id="oferta">
+  <div class="oferta-grid">
+
+    <!-- IMAGEN -->
+    <div class="oferta-img-col">
+      <img
+        src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png"
+        alt="Suero para cejas y pestañas"
+      />
+      <div class="oferta-img-badge">
+        <div class="oferta-img-badge-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div>
+          <div class="oferta-img-badge-t">100% Original</div>
+          <div class="oferta-img-badge-s">Producto certificado</div>
+        </div>
+      </div>
+      <div class="oferta-stock-tag">
+        <div class="stock-dot"></div>
+        Solo 20 unidades disponibles
+      </div>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="oferta-content">
+
+      <div class="oferta-eyebrow">
+        <i class="fas fa-bolt"></i> Oferta por tiempo limitado
+      </div>
+
+      <h2 class="oferta-title">
+        Tu mirada más <span>intensa</span><br>
+        al mejor precio
+      </h2>
+
+      <!-- PRECIOS -->
+      <div class="price-box">
+        <div class="price-original">
+          <span class="lbl">Precio normal</span>
+          <span class="amt">$59.990</span>
+        </div>
+        <div class="price-oferta-row">
+          <span class="lbl">Precio oferta</span>
+          <span class="amt">$35.990</span>
+          <span class="badge-off">40% OFF</span>
+        </div>
+        <div class="price-sep"></div>
+        <div class="price-envio">
+          <i class="fas fa-truck"></i>
+          <span>Envío a domicilio u oficina <strong>¡GRATIS!</strong> · Pagas al recibir</span>
+        </div>
+      </div>
+
+      <!-- INCLUDES -->
+      <ul class="oferta-includes">
+        <li>
+          <span class="check-icon"><i class="fas fa-check"></i></span>
+          Producto <strong>100% Original</strong>
+        </li>
+        <li>
+          <span class="check-icon"><i class="fas fa-check"></i></span>
+          Envío gratis a todo Chile — domicilio u oficina
+        </li>
+        <li>
+          <span class="check-icon"><i class="fas fa-check"></i></span>
+          Pagas solo al momento de recibir
+        </li>
+        <li>
+          <span class="gift-icon"><i class="fas fa-gift"></i></span>
+          Incluye <strong>Pincel Aplicador de regalo</strong>
+        </li>
+      </ul>
+
+      <!-- URGENCIA -->
+      <div class="urgencia-box">
+        <i class="fas fa-fire"></i>
+        <p>¡Quedan <strong>solo 20 unidades</strong> a este precio! Hasta agotar stock. No te quedes sin el tuyo.</p>
+      </div>
+
+      <!-- BOTÓN CTA -->
+      <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20comprar%20el%20suero%20para%20cejas%20y%20pesta%C3%B1as%20a%20%2435.990"
+         class="btn-oferta-main">
+        <i class="fab fa-whatsapp" style="font-size:16px"></i>
+        <span>¡Comprar ahora — $35.990!</span>
+      </a>
+
+      <div class="oferta-sep"></div>
+
+      <!-- CONTACTO -->
+      <div class="oferta-contact-box">
+        <div class="oferta-phone-wrap">
+          <div class="lbl">Pedidos al</div>
+          <div class="phone">+56 9 4110 5441</div>
+          <div class="sub">WhatsApp · Respuesta rápida</div>
+        </div>
+        <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20hacer%20un%20pedido"
+           class="btn-oferta-wsp">
+          <i class="fab fa-whatsapp"></i> Escribir ahora
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
