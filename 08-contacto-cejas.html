@@ -1,0 +1,376 @@
+<style>
+  /* ── CTA FINAL ── */
+  .cta-final {
+    background: #0A0A0A;
+    padding: 90px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,194,179,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-final .sec-tag-dark {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(0,194,179,.1);
+    border: 1px solid rgba(0,194,179,.25);
+    color: #00C2B3;
+    padding: 6px 16px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+
+  .cta-final h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 5vw, 58px);
+    font-weight: 600; color: #fff;
+    line-height: 1.1; margin-bottom: 16px;
+    letter-spacing: -.5px;
+  }
+  .cta-final h2 em { color: #00C2B3; font-style: italic; }
+
+  .cta-final p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 300;
+    color: rgba(255,255,255,.55);
+    margin-bottom: 36px;
+    max-width: 440px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.8; letter-spacing: .2px;
+  }
+
+  .cta-actions {
+    display: flex; gap: 14px;
+    justify-content: center; flex-wrap: wrap;
+  }
+
+  .btn-wsp-lg {
+    background: #00C2B3; color: #fff;
+    padding: 17px 36px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: all .3s; position: relative; overflow: hidden;
+  }
+  .btn-wsp-lg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    opacity: .1;
+  }
+  .btn-wsp-lg:hover::before { transform: translateX(0); }
+  .btn-wsp-lg:hover { transform: translateY(-2px); }
+  .btn-wsp-lg span, .btn-wsp-lg img { position: relative; z-index: 1; }
+
+  .btn-wsp-lg .wsp-logo {
+    width: 20px; height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .cta-trust {
+    margin-top: 36px;
+    display: flex; gap: 28px;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .cta-trust span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 400;
+    color: rgba(255,255,255,.3);
+    display: flex; align-items: center; gap: 6px;
+    letter-spacing: .5px;
+  }
+  .cta-trust span i { color: #00C2B3; font-size: 12px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505;
+    padding: 52px 5% 24px;
+    border-top: 1px solid rgba(0,194,179,.1);
+  }
+
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; margin-bottom: 36px;
+  }
+
+  /* Logo */
+  .foot-logo {
+    margin-bottom: 16px;
+  }
+  .foot-logo a {
+    display: inline-block;
+    transition: opacity .2s;
+  }
+  .foot-logo a:hover { opacity: .8; }
+  .foot-logo img {
+    height: 72px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .foot-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 300;
+    color: rgba(255,255,255,.35);
+    line-height: 1.75; margin-bottom: 20px;
+    max-width: 260px; letter-spacing: .2px;
+  }
+
+  .foot-social { display: flex; gap: 10px; }
+  .foot-social a {
+    width: 36px; height: 36px;
+    border-radius: 2px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.07);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.4); font-size: 15px;
+    text-decoration: none; transition: all .3s;
+  }
+  .foot-social a:hover {
+    background: #00C2B3;
+    border-color: #00C2B3;
+    color: #fff;
+  }
+
+  .foot-contact {
+    display: flex; flex-direction: column;
+    gap: 14px; justify-content: center;
+  }
+  .foot-contact-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,.25); margin-bottom: 4px;
+  }
+  .foot-contact a {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,.45); text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 400;
+    transition: color .25s; letter-spacing: .2px;
+  }
+  .foot-contact a:hover { color: #00C2B3; }
+  .foot-contact a i { color: #00C2B3; width: 16px; font-size: 14px; }
+
+  /* Separador y bottom */
+  .foot-bottom {
+    border-top: 1px solid rgba(255,255,255,.05);
+    padding-top: 20px;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .foot-bottom p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 300;
+    color: rgba(255,255,255,.2); letter-spacing: .3px;
+  }
+  .foot-bottom a {
+    color: #00C2B3; text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* ── BOTÓN FLOTANTE WSP ── */
+  @keyframes waPulse {
+    0%, 100% { opacity: .4; transform: scale(1); }
+    50%       { opacity: 0;  transform: scale(1.5); }
+  }
+
+  .wa-float {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    z-index: 900;
+  }
+
+  .wa-btn-float {
+    width: 58px; height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,.45);
+    transition: all .3s;
+    position: relative;
+  }
+  .wa-btn-float:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,.6); }
+
+  .wa-btn-float img {
+    width: 30px; height: 30px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    position: relative; z-index: 1;
+  }
+
+  .wa-pulse {
+    position: absolute; inset: -5px;
+    border-radius: 50%;
+    background: rgba(37,211,102,.25);
+    animation: waPulse 2.2s ease-in-out infinite;
+  }
+
+  /* Tooltip */
+  .wa-tooltip {
+    position: absolute;
+    right: 70px; bottom: 50%;
+    transform: translateY(50%);
+    background: #fff;
+    color: #0A0A0A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .5px;
+    padding: 8px 14px; border-radius: 2px;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+  .wa-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px; top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right: none;
+    border-left-color: #fff;
+  }
+  .wa-float:hover .wa-tooltip { opacity: 1; }
+
+  /* Responsive */
+  @media(max-width:600px) {
+    .foot-grid { grid-template-columns: 1fr; }
+    .cta-actions { flex-direction: column; align-items: center; }
+    .btn-wsp-lg { width: 100%; max-width: 320px; justify-content: center; }
+    .cta-trust { gap: 16px; }
+  }
+</style>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contacto">
+  <div class="sec-tag-dark">
+    <i class="fas fa-bolt"></i> Pide ahora
+  </div>
+  <h2>
+    Tu mirada más <em>irresistible</em><br>
+    está a un mensaje de distancia
+  </h2>
+  <p>
+    Escríbenos por WhatsApp y recibe tu suero en casa.
+    Envío gratis · Pagas al recibir · Respuesta inmediata.
+  </p>
+  <div class="cta-actions">
+    <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero%20para%20cejas%20y%20pesta%C3%B1as"
+       class="btn-wsp-lg">
+      <img
+        class="wsp-logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        onerror="this.style.display='none'"
+        alt="WhatsApp"
+      />
+      <span>Hablar por WhatsApp</span>
+    </a>
+  </div>
+  <div class="cta-trust">
+    <span><i class="fas fa-truck"></i> Envío gratis a todo Chile</span>
+    <span><i class="fas fa-hand-holding-usd"></i> Pagas al recibir</span>
+    <span><i class="fas fa-leaf"></i> 100% Natural</span>
+    <span><i class="fas fa-check-circle"></i> 100% Original</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+
+    <div>
+      <div class="foot-logo">
+        <a href="#inicio">
+          <img
+            src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/Logo.png"
+            alt="Logo"
+          />
+        </a>
+      </div>
+      <p class="foot-desc">
+        Suero intensivo de crecimiento para cejas y pestañas. Resultados reales desde la primera semana.
+      </p>
+      <div class="foot-social">
+        <a href="https://wa.me/56941105441" target="_blank" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.tiktok.com/@sofiamaldonadoaj" target="_blank" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="foot-contact">
+      <div class="foot-contact-title">Contacto</div>
+      <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero">
+        <i class="fab fa-whatsapp"></i> +56 9 4110 5441
+      </a>
+      <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero">
+        <i class="fas fa-truck"></i> Envío gratis · Todo Chile
+      </a>
+      <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero">
+        <i class="fas fa-hand-holding-usd"></i> Pagas al recibir
+      </a>
+      <a href="#inicio">
+        <i class="fas fa-arrow-up"></i> Volver al inicio
+      </a>
+    </div>
+
+  </div>
+
+  <div class="foot-bottom">
+    <p>© 2025 · Suero para Cejas & Pestañas · Todos los derechos reservados.</p>
+    <p>
+      Diseño web:
+      <a href="https://digitalmenteprochile.cl" target="_blank">Digitalmente Pro Chile</a>
+    </p>
+  </div>
+</footer>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<div class="wa-float">
+  <div class="wa-tooltip">¡Escríbenos ahora!</div>
+  <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero%20para%20cejas%20y%20pesta%C3%B1as"
+     class="wa-btn-float"
+     target="_blank" rel="noopener"
+     aria-label="WhatsApp">
+    <div class="wa-pulse"></div>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      alt="WhatsApp"
+    />
+  </a>
+</div>
+
+<!-- Animaciones scroll reveal -->
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
