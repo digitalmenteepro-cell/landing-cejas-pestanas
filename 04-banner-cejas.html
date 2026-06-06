@@ -2,10 +2,12 @@
   /* ── BANNER LARGO ── */
   .banner-familia {
     width: 100%;
-    height: 560px;
     overflow: hidden;
     position: relative;
+    /* Desktop: altura fija */
+    height: 560px;
   }
+
   .banner-familia-bg {
     position: absolute;
     inset: 0;
@@ -21,25 +23,22 @@
     to   { transform: scale(1.0); }
   }
 
-  /* Overlay izquierdo fuerte para legibilidad */
   .banner-overlay-left {
     position: absolute; inset: 0;
     background: linear-gradient(
       to right,
-      rgba(5,5,5,.92) 0%,
-      rgba(5,5,5,.75) 30%,
-      rgba(5,5,5,.35) 58%,
+      rgba(5,5,5,.88) 0%,
+      rgba(5,5,5,.65) 30%,
+      rgba(5,5,5,.25) 55%,
       transparent 100%
     );
     z-index: 2;
   }
-  /* Overlay inferior para separación con sección siguiente */
   .banner-overlay-bottom {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(5,5,5,.6) 0%, transparent 35%);
+    background: linear-gradient(to top, rgba(5,5,5,.55) 0%, transparent 35%);
     z-index: 2;
   }
-  /* Línea calipso decorativa izquierda */
   .banner-line {
     position: absolute;
     left: 0; top: 0; bottom: 0;
@@ -48,7 +47,6 @@
     z-index: 5;
   }
 
-  /* Contenido */
   .banner-content {
     position: absolute;
     top: 50%; left: 6%;
@@ -58,7 +56,7 @@
   }
 
   .banner-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 8px;
     background: rgba(0,194,179,.12);
     border: 1px solid rgba(0,194,179,.32);
     color: #00e5d4;
@@ -67,7 +65,7 @@
     font-size: 10px; font-weight: 600;
     letter-spacing: 2px; text-transform: uppercase;
     margin-bottom: 22px;
-    display: flex;
+    width: fit-content;
   }
   .banner-eyebrow::before {
     content: '';
@@ -81,21 +79,12 @@
   .banner-h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(30px, 4.2vw, 56px);
-    font-weight: 600;
-    line-height: 1.1;
-    color: #fff;
-    margin-bottom: 10px;
-    /* Sombra fuerte para legibilidad garantizada */
-    text-shadow:
-      0 2px 4px rgba(0,0,0,.9),
-      0 4px 24px rgba(0,0,0,.8),
-      0 0 60px rgba(0,0,0,.6);
+    font-weight: 600; line-height: 1.1;
+    color: #fff; margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,.9), 0 4px 24px rgba(0,0,0,.8);
     letter-spacing: -.3px;
   }
-  .banner-h3 span {
-    color: #00C2B3;
-    font-style: italic;
-  }
+  .banner-h3 span { color: #00C2B3; font-style: italic; }
   .banner-h3 .l-light {
     font-size: clamp(22px, 3vw, 38px);
     font-weight: 300;
@@ -106,12 +95,9 @@
   .banner-sub {
     font-family: 'Montserrat', sans-serif;
     font-size: 13px; font-weight: 300;
-    color: rgba(255,255,255,.75);
-    line-height: 1.8;
-    margin-bottom: 30px;
-    letter-spacing: .3px;
-    /* Sombra en el subtítulo también */
-    text-shadow: 0 1px 12px rgba(0,0,0,.9), 0 2px 20px rgba(0,0,0,.7);
+    color: rgba(255,255,255,.75); line-height: 1.8;
+    margin-bottom: 30px; letter-spacing: .3px;
+    text-shadow: 0 1px 12px rgba(0,0,0,.9);
     max-width: 420px;
   }
   .banner-sub strong { color: #00C2B3; font-weight: 600; }
@@ -123,13 +109,11 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 12px; font-weight: 700;
     letter-spacing: 1.5px; text-transform: uppercase;
-    text-decoration: none;
-    transition: all .3s;
+    text-decoration: none; transition: all .3s;
     position: relative; overflow: hidden;
   }
   .banner-btn::before {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: #0A0A0A;
     transform: translateX(-100%);
     transition: transform .3s ease;
@@ -137,7 +121,6 @@
   .banner-btn:hover::before { transform: translateX(0); }
   .banner-btn span, .banner-btn i { position: relative; z-index: 1; }
 
-  /* Pills estadísticas derecha */
   .banner-stats {
     position: absolute; bottom: 32px; right: 5%;
     z-index: 10; display: flex; gap: 10px;
@@ -145,8 +128,7 @@
   }
   .banner-stat-pill {
     display: flex; align-items: center; gap: 8px;
-    background: rgba(0,0,0,.65);
-    backdrop-filter: blur(14px);
+    background: rgba(0,0,0,.65); backdrop-filter: blur(14px);
     border: 1px solid rgba(0,194,179,.25);
     border-radius: 2px; padding: 9px 16px;
   }
@@ -158,125 +140,118 @@
   }
 
   /* ── BENEFICIOS ── */
-  .beneficios {
-    background: #F8F8F6;
-    padding: 80px 5%;
-  }
-
-  .sec-tag {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: rgba(0,194,179,.08);
-    border: 1px solid rgba(0,194,179,.2);
-    color: #00C2B3;
-    padding: 6px 16px; border-radius: 2px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .sec-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 4vw, 46px);
-    font-weight: 600; line-height: 1.1;
-    margin-bottom: 8px; color: #0A0A0A;
-    letter-spacing: -.3px;
-  }
-  .sec-title span { color: #00C2B3; font-style: italic; }
-
+  .beneficios { background: #F8F8F6; padding: 80px 5%; }
   .ben-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 44px;
+    gap: 20px; margin-top: 44px;
   }
-
   .ben-card {
-    background: #fff;
-    border: 1px solid #E8E8E6;
-    border-radius: 2px;
-    overflow: hidden;
+    background: #fff; border: 1px solid #E8E8E6;
+    border-radius: 2px; overflow: hidden;
     transition: all .3s;
     box-shadow: 0 2px 10px rgba(0,0,0,.04);
     display: flex; flex-direction: column;
   }
   .ben-card:hover {
-    border-color: #00C2B3;
-    transform: translateY(-5px);
+    border-color: #00C2B3; transform: translateY(-5px);
     box-shadow: 0 12px 32px rgba(0,194,179,.12);
   }
-
   .ben-img-wrap {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+    width: 100%; aspect-ratio: 1/1;
     overflow: hidden; position: relative; flex-shrink: 0;
   }
   .ben-img-wrap img {
     width: 100%; height: 100%;
     object-fit: cover; object-position: center top;
-    transition: transform .4s cubic-bezier(.16,1,.3,1);
-    display: block;
+    transition: transform .4s cubic-bezier(.16,1,.3,1); display: block;
   }
   .ben-card:hover .ben-img-wrap img { transform: scale(1.08); }
   .ben-img-wrap::after {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(to bottom, transparent 40%, rgba(0,194,179,.12) 100%);
   }
-
-  /* Icono encima de imagen */
   .ben-icon-wrap {
-    position: absolute;
-    top: 12px; left: 12px;
-    z-index: 5;
-    width: 36px; height: 36px;
-    background: rgba(0,0,0,.65);
-    backdrop-filter: blur(8px);
-    border-radius: 2px;
+    position: absolute; top: 12px; left: 12px; z-index: 5;
+    width: 36px; height: 36px; background: rgba(0,0,0,.65);
+    backdrop-filter: blur(8px); border-radius: 2px;
     display: flex; align-items: center; justify-content: center;
     border: 1px solid rgba(0,194,179,.3);
   }
   .ben-icon-wrap i { color: #00C2B3; font-size: 14px; }
-
   .ben-body {
-    padding: 18px 20px 22px;
-    display: flex; flex-direction: column; gap: 6px; flex: 1;
-    border-top: 2px solid transparent;
-    transition: border-color .3s;
+    padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1;
+    border-top: 2px solid transparent; transition: border-color .3s;
   }
   .ben-card:hover .ben-body { border-top-color: #00C2B3; }
-
   .ben-body h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px; font-weight: 700;
-    color: #0A0A0A; margin: 0;
-    letter-spacing: .3px; text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
+    color: #0A0A0A; margin: 0; letter-spacing: .3px; text-transform: uppercase;
   }
   .ben-body p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px; font-weight: 300;
+    font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 300;
     color: #777; line-height: 1.65; margin: 0;
   }
 
-  /* Responsive */
-  @media(max-width:768px) {
-    .banner-familia { height: 500px; }
-    .banner-stats { display: none; }
-    .banner-overlay-left {
-      background: linear-gradient(
-        to right,
-        rgba(5,5,5,.95) 0%,
-        rgba(5,5,5,.85) 50%,
-        rgba(5,5,5,.4) 100%
-      );
+  /* ═══════════════════════════════════════
+     RESPONSIVE — MÓVIL
+     La imagen se muestra COMPLETA arriba
+     y el texto queda debajo en fondo oscuro
+  ═══════════════════════════════════════ */
+  @media(max-width: 768px) {
+
+    .banner-familia {
+      height: auto;           /* ← deja que el contenido dicte la altura */
+      display: flex;
+      flex-direction: column;
+      background: #0a0a0a;
     }
-  }
-  @media(max-width:480px) {
-    .banner-familia { height: 440px; }
-    .banner-h3 { font-size: 28px; }
+
+    /* La imagen ocupa su proporción natural arriba */
+    .banner-familia-bg {
+      position: relative;     /* sale del absolute para ocupar espacio */
+      inset: auto;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;   /* muestra la imagen completa sin recorte */
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      transform: none;
+      animation: none;
+    }
+
+    /* Overlay lateral no hace falta en móvil — se quita */
+    .banner-overlay-left,
+    .banner-overlay-bottom,
+    .banner-line { display: none; }
+
+    /* El contenido ya no es absolute — fluye debajo de la imagen */
+    .banner-content {
+      position: relative;
+      top: auto; left: auto;
+      transform: none;
+      max-width: 100%;
+      background: #0a0a0a;
+      padding: 28px 5% 32px;
+    }
+
+    /* Pills de stats — las ponemos inline debajo del texto */
+    .banner-stats {
+      position: relative;
+      bottom: auto; right: auto;
+      justify-content: flex-start;
+      padding: 0 5% 24px;
+      background: #0a0a0a;
+    }
+
     .banner-btn { width: 100%; justify-content: center; }
-    .banner-content { left: 5%; right: 5%; max-width: 100%; }
-    .ben-img-wrap { aspect-ratio: 1 / 1; }
+    .banner-h3  { font-size: 28px; }
+  }
+
+  @media(max-width: 480px) {
+    .banner-familia-bg { aspect-ratio: 3 / 2; }
+    .banner-h3 { font-size: 26px; }
   }
 </style>
 
@@ -292,13 +267,10 @@
   <div class="banner-line"></div>
 
   <div class="banner-content">
-    <div class="banner-eyebrow">
-      Fórmula 100% Natural
-    </div>
+    <div class="banner-eyebrow">Fórmula 100% Natural</div>
     <h3 class="banner-h3">
       <span class="l-light">Para esa mujer que merece</span>
-      una mirada que<br>
-      <span>hable por sí sola</span>
+      una mirada que<br><span>hable por sí sola</span>
     </h3>
     <p class="banner-sub">
       Cejas densas, pestañas largas y naturales.<br>
@@ -320,78 +292,38 @@
 <!-- SECCIÓN BENEFICIOS -->
 <section class="beneficios" id="beneficios">
   <div class="sec-tag">¿Por qué elegirnos?</div>
-  <h2 class="sec-title">
-    Todo lo que tu mirada<br>
-    <span>necesita para brillar</span>
-  </h2>
+  <h2 class="sec-title">Todo lo que tu mirada<br><span>necesita para brillar</span></h2>
 
   <div class="ben-grid">
-
     <div class="ben-card">
-      <div class="ben-img-wrap">
-        <div class="ben-icon-wrap"><i class="fas fa-leaf"></i></div>
-        <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%202.jpg" alt="100% Natural"/>
-      </div>
-      <div class="ben-body">
-        <h3>100% Natural</h3>
-        <p>Activos botánicos que estimulan el folículo desde la raíz. Sin químicos agresivos ni parabenos.</p>
-      </div>
+      <div class="ben-img-wrap"><div class="ben-icon-wrap"><i class="fas fa-leaf"></i></div>
+      <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%202.jpg" alt="100% Natural"/></div>
+      <div class="ben-body"><h3>100% Natural</h3><p>Activos botánicos que estimulan el folículo desde la raíz. Sin químicos agresivos ni parabenos.</p></div>
     </div>
-
     <div class="ben-card">
-      <div class="ben-img-wrap">
-        <div class="ben-icon-wrap"><i class="fas fa-eye"></i></div>
-        <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png" alt="Resultados visibles"/>
-      </div>
-      <div class="ben-body">
-        <h3>Resultados desde la 1ª semana</h3>
-        <p>Más de 5.000 clientas comprueban resultados visibles de densidad y largo en pocos días.</p>
-      </div>
+      <div class="ben-img-wrap"><div class="ben-icon-wrap"><i class="fas fa-eye"></i></div>
+      <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png" alt="Resultados visibles"/></div>
+      <div class="ben-body"><h3>Resultados desde la 1ª semana</h3><p>Más de 5.000 clientas comprueban resultados visibles de densidad y largo en pocos días.</p></div>
     </div>
-
     <div class="ben-card">
-      <div class="ben-img-wrap">
-        <div class="ben-icon-wrap"><i class="fas fa-truck"></i></div>
-        <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/6.png" alt="Envío gratis"/>
-      </div>
-      <div class="ben-body">
-        <h3>Envío gratis a todo Chile</h3>
-        <p>Despacho a domicilio u oficina sin costo. Llega directo a donde tú estés.</p>
-      </div>
+      <div class="ben-img-wrap"><div class="ben-icon-wrap"><i class="fas fa-truck"></i></div>
+      <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/6.png" alt="Envío gratis"/></div>
+      <div class="ben-body"><h3>Envío gratis a todo Chile</h3><p>Despacho a domicilio u oficina sin costo. Llega directo a donde tú estés.</p></div>
     </div>
-
     <div class="ben-card">
-      <div class="ben-img-wrap">
-        <div class="ben-icon-wrap"><i class="fas fa-hand-holding-usd"></i></div>
-        <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%204.png" alt="Pagas al recibir"/>
-      </div>
-      <div class="ben-body">
-        <h3>Pagas al recibir</h3>
-        <p>Cero riesgo. Recibes tu pedido primero y pagas en el momento de la entrega.</p>
-      </div>
+      <div class="ben-img-wrap"><div class="ben-icon-wrap"><i class="fas fa-hand-holding-usd"></i></div>
+      <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%204.png" alt="Pagas al recibir"/></div>
+      <div class="ben-body"><h3>Pagas al recibir</h3><p>Cero riesgo. Recibes tu pedido primero y pagas en el momento de la entrega.</p></div>
     </div>
-
     <div class="ben-card">
-      <div class="ben-img-wrap">
-        <div class="ben-icon-wrap"><i class="fas fa-check-circle"></i></div>
-        <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/5.png" alt="Original"/>
-      </div>
-      <div class="ben-body">
-        <h3>Producto 100% Original</h3>
-        <p>Suero certificado, seguro para piel sensible. Dermatológicamente probado.</p>
-      </div>
+      <div class="ben-img-wrap"><div class="ben-icon-wrap"><i class="fas fa-check-circle"></i></div>
+      <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/5.png" alt="Original"/></div>
+      <div class="ben-body"><h3>Producto 100% Original</h3><p>Suero certificado, seguro para piel sensible. Dermatológicamente probado.</p></div>
     </div>
-
     <div class="ben-card">
-      <div class="ben-img-wrap">
-        <div class="ben-icon-wrap"><i class="fas fa-gift"></i></div>
-        <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/WhatsApp%20Image%202026-06-05%20at%2022.04.29.jpeg" alt="Pincel de regalo"/>
-      </div>
-      <div class="ben-body">
-        <h3>Pincel aplicador de regalo</h3>
-        <p>Cada pedido incluye un pincel aplicador profesional para una aplicación precisa y cómoda.</p>
-      </div>
+      <div class="ben-img-wrap"><div class="ben-icon-wrap"><i class="fas fa-gift"></i></div>
+      <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/WhatsApp%20Image%202026-06-05%20at%2022.04.29.jpeg" alt="Pincel de regalo"/></div>
+      <div class="ben-body"><h3>Pincel aplicador de regalo</h3><p>Cada pedido incluye un pincel aplicador profesional para una aplicación precisa y cómoda.</p></div>
     </div>
-
   </div>
 </section>
