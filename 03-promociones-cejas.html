@@ -24,7 +24,7 @@
 
   /* ── SECCIÓN OFERTA ── */
   .oferta {
-    background: #0A0A0A;
+    background: #ffffff;
     padding: 0;
     position: relative;
     overflow: hidden;
@@ -35,7 +35,7 @@
     top: -120px; right: -120px;
     width: 500px; height: 500px;
     border-radius: 50%;
-    background: rgba(0,194,179,.04);
+    background: rgba(0,194,179,.06);
     pointer-events: none;
   }
 
@@ -68,37 +68,10 @@
     background: linear-gradient(
       to right,
       transparent 55%,
-      rgba(10,10,10,.6) 80%,
-      rgba(10,10,10,1) 100%
+      rgba(255,255,255,.6) 80%,
+      rgba(255,255,255,1) 100%
     );
     pointer-events: none;
-  }
-
-  /* Badge sobre imagen */
-  .oferta-img-badge {
-    position: absolute;
-    top: 24px; left: 24px;
-    z-index: 10;
-    background: rgba(255,255,255,.96);
-    border-radius: 2px;
-    padding: 10px 16px;
-    display: flex; align-items: center; gap: 9px;
-    box-shadow: 0 6px 24px rgba(0,0,0,.18);
-  }
-  .oferta-img-badge-icon {
-    width: 34px; height: 34px;
-    background: rgba(0,194,179,.1);
-    border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; color: #00C2B3; flex-shrink: 0;
-  }
-  .oferta-img-badge-t {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px; font-weight: 700; color: #111; line-height: 1.2;
-  }
-  .oferta-img-badge-s {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px; color: #888;
   }
 
   /* Tag stock */
@@ -142,8 +115,8 @@
   .oferta-eyebrow {
     display: inline-flex; align-items: center; gap: 7px;
     background: rgba(0,194,179,.1);
-    border: 1px solid rgba(0,194,179,.25);
-    color: #00C2B3;
+    border: 1px solid rgba(0,194,179,.35);
+    color: #00A89B;
     padding: 6px 14px; border-radius: 2px;
     font-family: 'Montserrat', sans-serif;
     font-size: 10px; font-weight: 700;
@@ -154,15 +127,15 @@
   .oferta-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(26px, 3.2vw, 44px);
-    font-weight: 600; color: #fff; line-height: 1.1;
+    font-weight: 600; color: #111; line-height: 1.1;
     margin: 0; letter-spacing: -.3px;
   }
   .oferta-title span { color: #00C2B3; font-style: italic; }
 
   /* Caja de precios */
   .price-box {
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(0,194,179,.2);
+    background: rgba(0,194,179,.05);
+    border: 1px solid rgba(0,194,179,.25);
     border-radius: 2px;
     padding: 22px 24px;
     display: flex;
@@ -176,12 +149,12 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 10px; font-weight: 600;
     letter-spacing: 1.5px; text-transform: uppercase;
-    color: rgba(255,255,255,.4);
+    color: #999;
   }
   .price-original .amt {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px; font-weight: 500;
-    color: rgba(255,255,255,.35);
+    color: #bbb;
     text-decoration: line-through;
   }
   .price-oferta-row {
@@ -191,12 +164,12 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 10px; font-weight: 600;
     letter-spacing: 1.5px; text-transform: uppercase;
-    color: rgba(255,255,255,.4);
+    color: #999;
   }
   .price-oferta-row .amt {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(36px, 4vw, 50px);
-    font-weight: 600; color: #fff; line-height: 1;
+    font-weight: 600; color: #111; line-height: 1;
   }
   .badge-off {
     background: #00C2B3;
@@ -206,16 +179,16 @@
     padding: 6px 12px; border-radius: 2px;
     letter-spacing: .5px;
   }
-  .price-sep { height: 1px; background: rgba(0,194,179,.12); }
+  .price-sep { height: 1px; background: rgba(0,194,179,.2); }
   .price-envio {
     display: flex; align-items: center; gap: 8px;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px; font-weight: 500;
-    color: rgba(255,255,255,.65);
+    color: #555;
     letter-spacing: .3px;
   }
   .price-envio i { color: #00C2B3; font-size: 13px; }
-  .price-envio strong { color: #fff; font-weight: 700; }
+  .price-envio strong { color: #111; font-weight: 700; }
 
   /* Lista includes */
   .oferta-includes {
@@ -224,14 +197,14 @@
   }
   .oferta-includes li {
     display: flex; align-items: center; gap: 11px;
-    color: rgba(255,255,255,.85);
+    color: #444;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px; font-weight: 400;
   }
   .oferta-includes li .check-icon {
     width: 22px; height: 22px;
-    background: rgba(0,194,179,.12);
-    border: 1px solid rgba(0,194,179,.3);
+    background: rgba(0,194,179,.1);
+    border: 1px solid rgba(0,194,179,.35);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
@@ -239,14 +212,14 @@
   .oferta-includes li .check-icon i { color: #00C2B3; font-size: 9px; }
   .oferta-includes li .gift-icon {
     width: 22px; height: 22px;
-    background: rgba(255,215,0,.12);
-    border: 1px solid rgba(255,215,0,.3);
+    background: rgba(255,200,0,.12);
+    border: 1px solid rgba(255,200,0,.35);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .oferta-includes li .gift-icon i { color: #FFD700; font-size: 9px; }
-  .oferta-includes li strong { color: #fff; font-weight: 600; }
+  .oferta-includes li .gift-icon i { color: #d4a900; font-size: 9px; }
+  .oferta-includes li strong { color: #111; font-weight: 600; }
 
   /* Botón principal */
   .btn-oferta-main {
@@ -273,25 +246,25 @@
   /* Urgencia */
   .urgencia-box {
     display: flex; align-items: center; gap: 10px;
-    background: rgba(255,68,68,.08);
+    background: rgba(255,68,68,.06);
     border: 1px solid rgba(255,68,68,.2);
     border-radius: 2px; padding: 12px 16px;
   }
-  .urgencia-box i { color: #ff6b6b; font-size: 14px; flex-shrink: 0; }
+  .urgencia-box i { color: #ff4444; font-size: 14px; flex-shrink: 0; }
   .urgencia-box p {
     font-family: 'Montserrat', sans-serif;
     font-size: 12px; font-weight: 500;
-    color: rgba(255,255,255,.75); margin: 0; line-height: 1.5;
+    color: #555; margin: 0; line-height: 1.5;
   }
-  .urgencia-box p strong { color: #ff6b6b; font-weight: 700; }
+  .urgencia-box p strong { color: #cc2222; font-weight: 700; }
 
   /* Separador */
-  .oferta-sep { height: 1px; background: rgba(255,255,255,.07); }
+  .oferta-sep { height: 1px; background: rgba(0,0,0,.08); }
 
   /* Caja contacto */
   .oferta-contact-box {
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(0,194,179,.15);
+    background: rgba(0,194,179,.04);
+    border: 1px solid rgba(0,194,179,.2);
     border-radius: 2px; padding: 22px 24px;
     display: flex; align-items: center;
     justify-content: space-between;
@@ -301,22 +274,22 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 9px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 1.5px;
-    color: rgba(255,255,255,.35); margin-bottom: 4px;
+    color: #aaa; margin-bottom: 4px;
   }
   .oferta-phone-wrap .phone {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 600; color: #00C2B3; line-height: 1;
+    font-size: 22px; font-weight: 600; color: #00A89B; line-height: 1;
   }
   .oferta-phone-wrap .sub {
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px; color: rgba(255,255,255,.3); margin-top: 3px;
+    font-size: 10px; color: #aaa; margin-top: 3px;
     letter-spacing: .5px;
   }
   .btn-oferta-wsp {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,194,179,.12);
+    background: rgba(0,194,179,.1);
     border: 1px solid rgba(0,194,179,.3);
-    color: #00C2B3;
+    color: #00A89B;
     padding: 12px 20px; border-radius: 2px;
     font-family: 'Montserrat', sans-serif;
     font-size: 11px; font-weight: 600;
@@ -329,9 +302,9 @@
   @media(max-width:860px) {
     .oferta-grid { grid-template-columns: 1fr; }
     .oferta-img-col { min-height: unset; }
-    .oferta-img-col img { object-fit: contain; background: #0A0A0A; }
+    .oferta-img-col img { object-fit: contain; background: #f9f9f9; }
     .oferta-img-col::after {
-      background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,.9) 80%, rgba(10,10,10,1) 100%);
+      background: linear-gradient(to bottom, transparent 50%, rgba(255,255,255,.9) 80%, rgba(255,255,255,1) 100%);
     }
     .oferta-content { padding: 40px 5% 50px; }
     .oferta-contact-box { flex-direction: column; align-items: flex-start; }
@@ -366,15 +339,6 @@
         src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png"
         alt="Suero para cejas y pestañas"
       />
-      <div class="oferta-img-badge">
-        <div class="oferta-img-badge-icon">
-          <i class="fas fa-check-circle"></i>
-        </div>
-        <div>
-          <div class="oferta-img-badge-t">100% Original</div>
-          <div class="oferta-img-badge-s">Producto certificado</div>
-        </div>
-      </div>
       <div class="oferta-stock-tag">
         <div class="stock-dot"></div>
         Solo 20 unidades disponibles
