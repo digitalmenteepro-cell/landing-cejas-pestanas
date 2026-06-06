@@ -1,0 +1,506 @@
+<style>
+  /* ── PRODUCTO ÚNICO ── */
+  .product-section {
+    background: #fff;
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Fondo decorativo */
+  .product-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: rgba(0,194,179,.04);
+    pointer-events: none;
+  }
+  .product-section::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -150px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.02);
+    pointer-events: none;
+  }
+
+  .product-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── LADO IMAGEN ── */
+  .product-img-side {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Marco elegante */
+  .product-img-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .product-img-frame::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #00C2B3, transparent 50%, #0A0A0A);
+    z-index: 0;
+    border-radius: 2px;
+  }
+  .product-img-inner {
+    position: absolute;
+    inset: 2px;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #f8f8f6;
+  }
+  .product-img-inner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  .product-img-frame:hover .product-img-inner img {
+    transform: scale(1.05);
+  }
+
+  /* Badge 40% OFF sobre imagen */
+  .product-badge-off {
+    position: absolute;
+    top: 20px; right: 20px;
+    z-index: 10;
+    background: #00C2B3;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; font-weight: 800;
+    padding: 12px 16px;
+    border-radius: 2px;
+    line-height: 1;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,194,179,.4);
+  }
+  .product-badge-off small {
+    display: block;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    opacity: .85; margin-top: 2px;
+  }
+
+  /* Badge original */
+  .product-badge-orig {
+    position: absolute;
+    top: 20px; left: 20px;
+    z-index: 10;
+    background: rgba(255,255,255,.95);
+    border: 1px solid rgba(0,194,179,.3);
+    color: #0A0A0A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 8px 14px; border-radius: 2px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .product-badge-orig i { color: #00C2B3; font-size: 11px; }
+
+  /* Miniaturas */
+  .product-thumbs {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+  .thumb {
+    width: 64px; height: 64px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color .2s;
+    flex-shrink: 0;
+  }
+  .thumb.active { border-color: #00C2B3; }
+  .thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
+  /* ── LADO CONTENIDO ── */
+  .product-content {
+    display: flex; flex-direction: column; gap: 24px;
+  }
+
+  .product-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(0,194,179,.08);
+    border: 1px solid rgba(0,194,179,.2);
+    color: #00C2B3;
+    padding: 6px 14px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .product-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 600; color: #0A0A0A;
+    line-height: 1.08; margin: 0;
+    letter-spacing: -.5px;
+  }
+  .product-title em { color: #00C2B3; font-style: italic; }
+  .product-title span { display: block; font-weight: 300; font-size: 0.65em; color: #888; margin-top: 4px; letter-spacing: 2px; font-style: normal; font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-size: 11px; }
+
+  .product-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 300;
+    color: #666; line-height: 1.85;
+    letter-spacing: .2px; margin: 0;
+  }
+  .product-desc strong { color: #0A0A0A; font-weight: 600; }
+
+  /* Ingredientes */
+  .ingredient-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .ingredient-card {
+    background: #F8F8F6;
+    border: 1px solid #EBEBEA;
+    border-radius: 2px;
+    padding: 14px;
+    display: flex; align-items: flex-start; gap: 10px;
+    transition: border-color .25s;
+  }
+  .ingredient-card:hover { border-color: #00C2B3; }
+  .ingredient-icon {
+    width: 36px; height: 36px;
+    background: #0A0A0A;
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .ingredient-icon i { color: #00C2B3; font-size: 14px; }
+  .ingredient-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700;
+    color: #0A0A0A; margin: 0 0 3px; letter-spacing: .3px;
+    text-transform: uppercase;
+  }
+  .ingredient-card p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 300;
+    color: #888; line-height: 1.4; margin: 0;
+  }
+
+  /* Separador */
+  .product-sep { height: 1px; background: #EBEBEA; }
+
+  /* Caja de precios */
+  .product-price-box {
+    background: #0A0A0A;
+    border-radius: 2px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .price-left { display: flex; flex-direction: column; gap: 4px; }
+  .price-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+  }
+  .price-old {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 400;
+    color: rgba(255,255,255,.35);
+    text-decoration: line-through;
+  }
+  .price-new {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px; font-weight: 600;
+    color: #fff; line-height: 1;
+    letter-spacing: -1px;
+  }
+  .price-new sub {
+    font-size: 18px; font-weight: 400;
+    vertical-align: super; color: #00C2B3;
+  }
+  .price-right { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  .price-envio-tag {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(0,194,179,.15);
+    border: 1px solid rgba(0,194,179,.3);
+    color: #00C2B3;
+    padding: 7px 14px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .5px; white-space: nowrap;
+  }
+  .price-pagar-tag {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    color: rgba(255,255,255,.65);
+    padding: 7px 14px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: .3px; white-space: nowrap;
+  }
+  .price-pagar-tag i { color: rgba(255,255,255,.4); font-size: 11px; }
+
+  /* Gift tag */
+  .gift-tag {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,215,0,.06);
+    border: 1px solid rgba(255,215,0,.2);
+    border-radius: 2px; padding: 12px 16px;
+  }
+  .gift-tag i { color: #FFD700; font-size: 16px; flex-shrink: 0; }
+  .gift-tag p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 500;
+    color: rgba(10,10,10,.75); margin: 0; line-height: 1.5;
+  }
+  .gift-tag p strong { color: #0A0A0A; font-weight: 700; }
+
+  /* Botón CTA */
+  .btn-product-cta {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: #00C2B3; color: #fff;
+    padding: 18px 36px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none;
+    transition: all .3s;
+    position: relative; overflow: hidden;
+  }
+  .btn-product-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: #0A0A0A;
+    transform: translateX(-100%);
+    transition: transform .35s ease;
+  }
+  .btn-product-cta:hover::before { transform: translateX(0); }
+  .btn-product-cta span, .btn-product-cta i { position: relative; z-index: 1; }
+
+  /* Stock urgency */
+  .stock-bar-wrap {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .stock-bar-top {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .stock-bar-top span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600;
+    color: #888; letter-spacing: .5px; text-transform: uppercase;
+  }
+  .stock-bar-top strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; color: #ff4444;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .stock-dot-red {
+    width: 6px; height: 6px;
+    border-radius: 50%; background: #ff4444;
+    animation: blink 1.2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes blink { 0%,100%{opacity:1}50%{opacity:.2} }
+  .stock-bar-bg {
+    height: 4px; background: #EBEBEA;
+    border-radius: 2px; overflow: hidden;
+  }
+  .stock-bar-fill {
+    height: 100%; width: 20%;
+    background: linear-gradient(to right, #ff4444, #ff8888);
+    border-radius: 2px;
+    animation: stockFill 1.5s ease-out forwards;
+  }
+  @keyframes stockFill { from{width:0} to{width:20%} }
+
+  /* Responsive */
+  @media(max-width:900px) {
+    .product-inner { grid-template-columns: 1fr; gap: 40px; }
+    .ingredient-grid { grid-template-columns: 1fr 1fr; }
+    .product-price-box { flex-direction: column; align-items: flex-start; }
+    .price-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+  }
+  @media(max-width:480px) {
+    .product-section { padding: 60px 5%; }
+    .ingredient-grid { grid-template-columns: 1fr; }
+    .product-title { font-size: 32px; }
+    .price-new { font-size: 38px; }
+    .btn-product-cta { font-size: 12px; padding: 16px 24px; }
+  }
+</style>
+
+<!-- PRODUCTO ÚNICO -->
+<section class="product-section" id="producto">
+  <div class="product-inner">
+
+    <!-- IMAGEN -->
+    <div class="product-img-side">
+      <div class="product-img-frame">
+        <div class="product-img-inner">
+          <img
+            id="mainProductImg"
+            src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20original.png"
+            alt="Suero para cejas y pestañas"
+          />
+        </div>
+        <div class="product-badge-off">
+          40% OFF
+          <small>Precio especial</small>
+        </div>
+        <div class="product-badge-orig">
+          <i class="fas fa-check-circle"></i> 100% Original
+        </div>
+      </div>
+
+      <!-- Miniaturas -->
+      <div class="product-thumbs">
+        <div class="thumb active" onclick="changeImg(this,'https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20original.png')">
+          <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20original.png" alt="">
+        </div>
+        <div class="thumb" onclick="changeImg(this,'https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%202.jpg')">
+          <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%202.jpg" alt="">
+        </div>
+        <div class="thumb" onclick="changeImg(this,'https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png')">
+          <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png" alt="">
+        </div>
+        <div class="thumb" onclick="changeImg(this,'https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%204.png')">
+          <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%204.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="product-content">
+
+      <div class="product-eyebrow">
+        <i class="fas fa-star"></i> Suero intensivo de crecimiento
+      </div>
+
+      <h2 class="product-title">
+        El secreto de una<br>
+        mirada <em>irresistible</em>
+        <span>Cejas densas · Pestañas largas</span>
+      </h2>
+
+      <p class="product-desc">
+        Fórmula con <strong>activos botánicos certificados</strong> que estimulan el folículo
+        desde la raíz. Resultados visibles desde la primera semana. Sin extensiones,
+        sin dolor — solo el poder de tu mirada natural llevado al máximo.
+      </p>
+
+      <!-- Ingredientes / beneficios activos -->
+      <div class="ingredient-grid">
+        <div class="ingredient-card">
+          <div class="ingredient-icon"><i class="fas fa-leaf"></i></div>
+          <div>
+            <h4>Biotina vegetal</h4>
+            <p>Fortalece el folículo y estimula el crecimiento activo</p>
+          </div>
+        </div>
+        <div class="ingredient-card">
+          <div class="ingredient-icon"><i class="fas fa-tint"></i></div>
+          <div>
+            <h4>Ácido hialurónico</h4>
+            <p>Hidrata y nutre la raíz del cabello</p>
+          </div>
+        </div>
+        <div class="ingredient-card">
+          <div class="ingredient-icon"><i class="fas fa-seedling"></i></div>
+          <div>
+            <h4>Extracto de bambú</h4>
+            <p>Aporta silicio natural para pestañas más fuertes</p>
+          </div>
+        </div>
+        <div class="ingredient-card">
+          <div class="ingredient-icon"><i class="fas fa-sun"></i></div>
+          <div>
+            <h4>Vitamina E</h4>
+            <p>Antioxidante que protege y regenera el folículo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regalo -->
+      <div class="gift-tag">
+        <i class="fas fa-gift"></i>
+        <p>Cada pedido incluye <strong>Pincel Aplicador profesional de regalo</strong> para una aplicación precisa en cejas y pestañas.</p>
+      </div>
+
+      <div class="product-sep"></div>
+
+      <!-- Stock urgency -->
+      <div class="stock-bar-wrap">
+        <div class="stock-bar-top">
+          <span>Stock disponible</span>
+          <strong><div class="stock-dot-red"></div> Solo 20 unidades</strong>
+        </div>
+        <div class="stock-bar-bg">
+          <div class="stock-bar-fill"></div>
+        </div>
+      </div>
+
+      <!-- Caja precio -->
+      <div class="product-price-box">
+        <div class="price-left">
+          <span class="price-label">Precio oferta</span>
+          <div class="price-old">Precio normal $59.990</div>
+          <div class="price-new"><sub>$</sub>35.990</div>
+        </div>
+        <div class="price-right">
+          <div class="price-envio-tag">
+            <i class="fas fa-truck"></i> Envío gratis a todo Chile
+          </div>
+          <div class="price-pagar-tag">
+            <i class="fas fa-hand-holding-usd"></i> Pagas al recibir
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20comprar%20el%20suero%20para%20cejas%20y%20pesta%C3%B1as%20a%20%2435.990"
+         class="btn-product-cta">
+        <i class="fab fa-whatsapp" style="font-size:17px"></i>
+        <span>¡Comprar ahora — $35.990!</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function changeImg(thumb, src) {
+  document.getElementById('mainProductImg').src = src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+</script>
