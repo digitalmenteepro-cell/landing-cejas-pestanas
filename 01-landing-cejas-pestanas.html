@@ -80,19 +80,19 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(255,255,255,0.98);
-    border-bottom: 1px solid var(--gray-mid);
+    background: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
     padding: 0 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 72px;
-    box-shadow: 0 1px 20px rgba(0,0,0,0.06);
-    backdrop-filter: blur(12px);
-    transition: box-shadow 0.3s ease;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: border-color 0.3s ease;
   }
 
-  /* Logo */
+  /* Logo — sin fondo, transparente */
   .nav-logo {
     display: flex;
     align-items: center;
@@ -105,6 +105,7 @@
     width: auto;
     display: block;
     object-fit: contain;
+    /* Sin filtro — el logo ya viene sin fondo */
   }
   .nav-logo-text {
     display: flex;
@@ -115,7 +116,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 9px;
     font-weight: 400;
-    color: var(--gray-text);
+    color: rgba(255,255,255,0.65);
     letter-spacing: 2.5px;
     text-transform: uppercase;
     display: flex;
@@ -137,7 +138,7 @@
     list-style: none;
   }
   .nav-links a {
-    color: var(--black);
+    color: var(--calipso);
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
@@ -165,13 +166,14 @@
   /* Divider */
   .nav-divider {
     width: 1px; height: 28px;
-    background: var(--gray-mid);
+    background: rgba(255,255,255,0.15);
     margin: 0 10px;
   }
 
   /* CTA */
   .nav-cta {
-    background: var(--black) !important;
+    background: #25D366 !important;
+    border: 1px solid #1ebe5d !important;
     color: var(--white) !important;
     padding: 11px 22px !important;
     border-radius: 2px !important;
@@ -184,23 +186,16 @@
     display: flex !important;
     align-items: center !important;
     gap: 9px !important;
-    transition: background 0.25s !important;
+    transition: all 0.25s !important;
     position: relative;
     overflow: hidden;
   }
-  .nav-cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: #25D366;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-  .nav-cta:hover::before { transform: translateX(0); }
+  .nav-cta::before { display: none; }
+  .nav-cta:hover { background: #1ebe5d !important; border-color: #1ebe5d !important; }
   .nav-cta img,
-  .nav-cta span { position: relative; z-index: 1; }
+  .nav-cta span,
+  .nav-cta i { position: relative; z-index: 1; }
 
-  /* Ícono WSP en el botón CTA */
   .nav-cta-wsp-icon {
     width: 20px;
     height: 20px;
@@ -221,7 +216,7 @@
   .nav-ham span {
     display: block;
     width: 22px; height: 1px;
-    background: var(--black);
+    background: rgba(255,255,255,0.85);
     transition: all 0.3s;
   }
 
@@ -307,11 +302,6 @@
     transition: background 0.25s !important;
   }
   .mob-wsp:hover { background: #25D366 !important; }
-  .mob-wsp img {
-    width: 20px; height: 20px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-  }
 
   @media(max-width: 768px) {
     .nav-links   { display: none; }
@@ -379,14 +369,8 @@
 
   <div class="nav-divider"></div>
 
-  <a href="https://wa.me/56900000000?text=Hola!%20Quiero%20pedir" class="nav-cta">
-    <img
-      class="nav-cta-wsp-icon"
-      src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/Logo.png"
-      onerror="this.style.display='none'; this.nextSibling.style.display='inline';"
-      alt="WhatsApp"
-    />
-    <i class="fab fa-whatsapp" style="display:none; font-size:17px;"></i>
+  <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir" class="nav-cta">
+    <i class="fab fa-whatsapp" style="font-size:17px;"></i>
     <span>Comprar ahora</span>
   </a>
 
@@ -417,7 +401,7 @@
 
   <div class="mob-sep"></div>
 
-  <a href="https://wa.me/56900000000?text=Hola!%20Quiero%20pedir"
+  <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir"
      class="mob-link mob-wsp"
      onclick="document.getElementById('mob').classList.remove('open')">
     <i class="fab fa-whatsapp" style="font-size:17px;"></i>
@@ -426,21 +410,5 @@
 </div>
 
 <script>
-  // Reemplazar ícono WSP en el botón CTA con el logo real de WhatsApp
-  const ctaIcon = document.querySelector('.nav-cta-wsp-icon');
-  if (ctaIcon) {
-    const wspImg = new Image();
-    wspImg.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg';
-    wspImg.onload = () => {
-      ctaIcon.src = wspImg.src;
-      ctaIcon.style.filter = 'brightness(0) invert(1)';
-    };
-  }
-
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (nav) nav.style.boxShadow = window.scrollY > 60
-      ? '0 2px 30px rgba(0,0,0,0.10)'
-      : '0 1px 20px rgba(0,0,0,0.06)';
-  });
+  // Sin lógica de scroll — navbar siempre transparente
 </script>
