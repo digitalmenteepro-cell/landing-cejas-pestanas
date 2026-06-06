@@ -1,0 +1,216 @@
+<style>
+  .galeria {
+    background: #fff;
+    padding: 80px 5%;
+  }
+
+  .sec-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 300;
+    color: #888; line-height: 1.8;
+    max-width: 500px; letter-spacing: .2px;
+  }
+
+  /* Grid galería */
+  .gal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 44px;
+  }
+
+  .gal-item {
+    border-radius: 2px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #EBEBEA;
+  }
+
+  .gal-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform .5s cubic-bezier(.16,1,.3,1);
+    display: block;
+  }
+  .gal-item:hover img { transform: scale(1.08); }
+
+  /* Overlay al hover */
+  .gal-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,.72);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity .35s;
+    padding: 20px;
+    text-align: center;
+  }
+  .gal-item:hover .gal-overlay { opacity: 1; }
+
+  .gal-overlay-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(0,194,179,.2);
+    border: 1px solid rgba(0,194,179,.5);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .gal-overlay-icon i { color: #00C2B3; font-size: 18px; }
+
+  .gal-overlay-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600;
+    color: #fff; line-height: 1.2;
+    letter-spacing: .3px;
+  }
+  .gal-overlay-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 400;
+    color: rgba(255,255,255,.65);
+    letter-spacing: .5px; line-height: 1.5;
+  }
+
+  /* Etiqueta "Resultado real" sobre cada foto */
+  .gal-tag {
+    position: absolute;
+    bottom: 14px; left: 14px;
+    z-index: 5;
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0,194,179,.3);
+    color: #00C2B3;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px;
+    display: flex; align-items: center; gap: 5px;
+    transition: opacity .3s;
+  }
+  .gal-item:hover .gal-tag { opacity: 0; }
+  .gal-tag::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #00C2B3;
+    flex-shrink: 0;
+  }
+
+  /* CTA debajo galería */
+  .gal-cta {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .gal-cta p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 600; color: #0A0A0A;
+    line-height: 1.2; letter-spacing: -.3px;
+  }
+  .gal-cta p em { color: #00C2B3; font-style: italic; }
+  .btn-gal-cta {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: #0A0A0A; color: #fff;
+    padding: 15px 34px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none;
+    transition: background .25s;
+  }
+  .btn-gal-cta:hover { background: #00C2B3; }
+
+  @media(max-width:640px) {
+    .gal-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .gal-item:nth-child(3) {
+      grid-column: 1 / -1;
+      aspect-ratio: 2 / 1;
+    }
+    .gal-item:nth-child(3) img {
+      object-position: center 30%;
+    }
+  }
+</style>
+
+<!-- GALERÍA -->
+<section class="galeria" id="galeria">
+
+  <div class="sec-tag">Resultados reales</div>
+  <h2 class="sec-title">
+    Mujeres reales.<br>
+    <span>Transformaciones reales.</span>
+  </h2>
+  <p class="sec-sub">
+    Así se ven los resultados de usar el suero día a día.
+    Fotos de clientas reales — sin filtros, sin edición.
+  </p>
+
+  <div class="gal-grid">
+
+    <!-- Foto 1 -->
+    <div class="gal-item">
+      <img
+        src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/galeria%201.png"
+        alt="Resultado real cejas densas"
+      />
+      <div class="gal-tag">Resultado real</div>
+      <div class="gal-overlay">
+        <div class="gal-overlay-icon"><i class="fas fa-eye"></i></div>
+        <div class="gal-overlay-title">Cejas más densas<br>y definidas</div>
+        <div class="gal-overlay-sub">Aplicación diaria · 2 semanas de uso</div>
+      </div>
+    </div>
+
+    <!-- Foto 2 -->
+    <div class="gal-item">
+      <img
+        src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/galeria%202.png"
+        alt="Resultado real pestañas largas"
+      />
+      <div class="gal-tag">Resultado real</div>
+      <div class="gal-overlay">
+        <div class="gal-overlay-icon"><i class="fas fa-star"></i></div>
+        <div class="gal-overlay-title">Pestañas más largas<br>y voluminosas</div>
+        <div class="gal-overlay-sub">Sin extensiones · 100% natural</div>
+      </div>
+    </div>
+
+    <!-- Foto 3 -->
+    <div class="gal-item">
+      <img
+        src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/galeria%203.png"
+        alt="Resultado real mirada transformada"
+      />
+      <div class="gal-tag">Resultado real</div>
+      <div class="gal-overlay">
+        <div class="gal-overlay-icon"><i class="fas fa-heart"></i></div>
+        <div class="gal-overlay-title">Una mirada que<br>habla por sí sola</div>
+        <div class="gal-overlay-sub">Sin maquillaje · Solo el suero</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA debajo -->
+  <div class="gal-cta">
+    <p>¿Lista para ver los resultados<br>en tu propia <em>mirada</em>?</p>
+    <a href="https://wa.me/56941105441?text=Hola!%20Vi%20los%20resultados%20y%20quiero%20pedir%20el%20suero"
+       class="btn-gal-cta">
+      <i class="fab fa-whatsapp" style="font-size:15px"></i>
+      <span>Quiero estos resultados</span>
+    </a>
+  </div>
+
+</section>
