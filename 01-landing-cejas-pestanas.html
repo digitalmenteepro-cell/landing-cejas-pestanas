@@ -1,0 +1,446 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  :root {
+    --calipso:      #00C2B3;
+    --calipso-dark: #009E91;
+    --calipso-light:#E0F7F5;
+    --black:        #0A0A0A;
+    --white:        #FFFFFF;
+    --gray-mid:     #D0D0CC;
+    --gray-text:    #6B6B68;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ── BARRA TICKER ── */
+  .ticker-bar {
+    background: var(--black);
+    padding: 9px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1001;
+  }
+  .ticker-bar::before,
+  .ticker-bar::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .ticker-bar::before { left: 0; background: linear-gradient(to right, #0A0A0A, transparent); }
+  .ticker-bar::after  { right: 0; background: linear-gradient(to left, #0A0A0A, transparent); }
+
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 35s linear infinite;
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 36px;
+    color: rgba(255,255,255,0.85);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .ticker-item strong { color: var(--calipso); font-weight: 600; }
+  .ticker-item i { color: var(--calipso); font-size: 10px; }
+
+  .ticker-dot {
+    display: inline-block;
+    width: 3px; height: 3px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    margin: 0 8px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── NAV PRINCIPAL ── */
+  nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255,255,255,0.98);
+    border-bottom: 1px solid var(--gray-mid);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+    backdrop-filter: blur(12px);
+    transition: box-shadow 0.3s ease;
+  }
+
+  /* Logo */
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo-img {
+    height: 52px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+  .nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .nav-logo-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--gray-text);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-logo-sub::before {
+    content: '';
+    display: inline-block;
+    width: 16px; height: 1px;
+    background: var(--calipso);
+  }
+
+  /* Links */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--black);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 2px;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; left: 16px; right: 16px;
+    height: 1px;
+    background: var(--calipso);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  .nav-links a:hover { color: var(--calipso); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* Divider */
+  .nav-divider {
+    width: 1px; height: 28px;
+    background: var(--gray-mid);
+    margin: 0 10px;
+  }
+
+  /* CTA */
+  .nav-cta {
+    background: var(--black) !important;
+    color: var(--white) !important;
+    padding: 11px 22px !important;
+    border-radius: 2px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    transition: background 0.25s !important;
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #25D366;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .nav-cta:hover::before { transform: translateX(0); }
+  .nav-cta img,
+  .nav-cta span { position: relative; z-index: 1; }
+
+  /* Ícono WSP en el botón CTA */
+  .nav-cta-wsp-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  /* Hamburguesa */
+  .nav-ham {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-ham span {
+    display: block;
+    width: 22px; height: 1px;
+    background: var(--black);
+    transition: all 0.3s;
+  }
+
+  /* Menú móvil */
+  .mob-menu {
+    display: none;
+    position: fixed; inset: 0;
+    background: var(--white);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .mob-menu.open { display: flex; }
+
+  .mob-close {
+    position: absolute;
+    top: 22px; right: 22px;
+    background: none; border: none;
+    cursor: pointer; padding: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .mob-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 36px;
+    text-decoration: none;
+  }
+  .mob-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .mob-sep {
+    width: 30px; height: 1px;
+    background: var(--gray-mid);
+    margin: 16px 0;
+  }
+
+  .mob-link {
+    color: var(--black) !important;
+    text-decoration: none !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 2.5px !important;
+    text-transform: uppercase !important;
+    padding: 14px 40px !important;
+    display: block !important;
+    text-align: center !important;
+    transition: all 0.2s !important;
+    border-bottom: 1px solid transparent !important;
+  }
+  .mob-link:hover {
+    color: var(--calipso) !important;
+    border-bottom-color: var(--calipso) !important;
+  }
+
+  .mob-wsp {
+    background: var(--black) !important;
+    color: var(--white) !important;
+    border-radius: 2px !important;
+    font-weight: 600 !important;
+    padding: 14px 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    margin-top: 20px !important;
+    letter-spacing: 1.5px !important;
+    border-bottom: none !important;
+    transition: background 0.25s !important;
+  }
+  .mob-wsp:hover { background: #25D366 !important; }
+  .mob-wsp img {
+    width: 20px; height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  @media(max-width: 768px) {
+    .nav-links   { display: none; }
+    .nav-divider { display: none; }
+    .nav-ham     { display: flex; }
+    .nav-logo-text { display: none; }
+  }
+</style>
+
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span class="ticker-item"><i class="fas fa-gift"></i> <strong>Envío 100% Gratis</strong> a todo Chile</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-box-open"></i> Pagas <strong>al recibir</strong> tu pedido</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-map-marker-alt"></i> Enviamos a <strong>todas las regiones</strong></span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-shield-alt"></i> Compra <strong>sin riesgo</strong></span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-truck"></i> Despacho a <strong>Santiago · Valparaíso · Biobío · Araucanía · Maule</strong></span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-star" style="color:#FFD700"></i> Más de <strong>5.000 clientas felices</strong></span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-leaf"></i> Fórmula <strong>natural y segura</strong></span>
+    <span class="ticker-dot"></span>
+    <!-- copia para loop infinito -->
+    <span class="ticker-item"><i class="fas fa-gift"></i> <strong>Envío 100% Gratis</strong> a todo Chile</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-box-open"></i> Pagas <strong>al recibir</strong> tu pedido</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-map-marker-alt"></i> Enviamos a <strong>todas las regiones</strong></span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-shield-alt"></i> Compra <strong>sin riesgo</strong></span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-truck"></i> Despacho a <strong>Santiago · Valparaíso · Biobío · Araucanía · Maule</strong></span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-star" style="color:#FFD700"></i> Más de <strong>5.000 clientas felices</strong></span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fas fa-leaf"></i> Fórmula <strong>natural y segura</strong></span>
+    <span class="ticker-dot"></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+
+  <a href="#" class="nav-logo">
+    <img
+      class="nav-logo-img"
+      src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/Logo.png"
+      alt="Logo"
+    />
+    <div class="nav-logo-text">
+      <span class="nav-logo-sub">Cejas & Pestañas</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#producto">Producto</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+    <li><a href="#beneficios">Beneficios</a></li>
+    <li><a href="#oferta">Oferta</a></li>
+  </ul>
+
+  <div class="nav-divider"></div>
+
+  <a href="https://wa.me/56900000000?text=Hola!%20Quiero%20pedir" class="nav-cta">
+    <img
+      class="nav-cta-wsp-icon"
+      src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/Logo.png"
+      onerror="this.style.display='none'; this.nextSibling.style.display='inline';"
+      alt="WhatsApp"
+    />
+    <i class="fab fa-whatsapp" style="display:none; font-size:17px;"></i>
+    <span>Comprar ahora</span>
+  </a>
+
+  <button class="nav-ham" onclick="document.getElementById('mob').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MENÚ MÓVIL -->
+<div class="mob-menu" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">
+    <i class="fas fa-times"></i> Cerrar
+  </button>
+
+  <a href="#" class="mob-logo" onclick="document.getElementById('mob').classList.remove('open')">
+    <img
+      src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/Logo.png"
+      alt="Logo"
+    />
+  </a>
+
+  <div class="mob-sep"></div>
+
+  <a href="#producto"   class="mob-link" onclick="document.getElementById('mob').classList.remove('open')">Producto</a>
+  <a href="#resultados" class="mob-link" onclick="document.getElementById('mob').classList.remove('open')">Resultados</a>
+  <a href="#beneficios" class="mob-link" onclick="document.getElementById('mob').classList.remove('open')">Beneficios</a>
+  <a href="#oferta"     class="mob-link" onclick="document.getElementById('mob').classList.remove('open')">Oferta</a>
+
+  <div class="mob-sep"></div>
+
+  <a href="https://wa.me/56900000000?text=Hola!%20Quiero%20pedir"
+     class="mob-link mob-wsp"
+     onclick="document.getElementById('mob').classList.remove('open')">
+    <i class="fab fa-whatsapp" style="font-size:17px;"></i>
+    Comprar ahora
+  </a>
+</div>
+
+<script>
+  // Reemplazar ícono WSP en el botón CTA con el logo real de WhatsApp
+  const ctaIcon = document.querySelector('.nav-cta-wsp-icon');
+  if (ctaIcon) {
+    const wspImg = new Image();
+    wspImg.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg';
+    wspImg.onload = () => {
+      ctaIcon.src = wspImg.src;
+      ctaIcon.style.filter = 'brightness(0) invert(1)';
+    };
+  }
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (nav) nav.style.boxShadow = window.scrollY > 60
+      ? '0 2px 30px rgba(0,0,0,0.10)'
+      : '0 1px 20px rgba(0,0,0,0.06)';
+  });
+</script>
