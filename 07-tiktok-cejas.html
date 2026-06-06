@@ -1,0 +1,390 @@
+<style>
+  /* ── SECCIÓN TIKTOK ── */
+  .tiktok-section {
+    background: #0A0A0A;
+    padding: 80px 5%;
+    overflow: hidden;
+    position: relative;
+  }
+  .tiktok-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,194,179,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Header */
+  .tiktok-header {
+    text-align: center;
+    margin-bottom: 52px;
+    position: relative; z-index: 2;
+  }
+  .tiktok-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.6);
+    padding: 6px 16px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .tiktok-eyebrow .tt-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff0050, #00f2ea);
+    flex-shrink: 0;
+  }
+  .tiktok-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 600; color: #fff;
+    line-height: 1.1; margin-bottom: 14px;
+  }
+  .tiktok-title em { color: #00C2B3; font-style: italic; }
+  .tiktok-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 300;
+    color: rgba(255,255,255,.4);
+    max-width: 460px; margin: 0 auto; line-height: 1.8;
+    letter-spacing: .3px;
+  }
+
+  /* Grid */
+  .tiktok-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative; z-index: 2;
+  }
+
+  /* Tarjeta */
+  .tt-card {
+    display: flex; flex-direction: column;
+    border-radius: 2px; overflow: hidden;
+    background: #111;
+    border: 1px solid rgba(255,255,255,.07);
+    transition: all .35s cubic-bezier(.16,1,.3,1);
+    box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  }
+  .tt-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0,194,179,.25);
+    box-shadow: 0 20px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(0,194,179,.1);
+  }
+
+  /* Embed container 9:16 */
+  .tt-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.78%;
+    overflow: hidden;
+    background: #000;
+  }
+  .tt-embed iframe {
+    position: absolute;
+    inset: 0; width: 100%; height: 100%;
+    border: none; display: block;
+  }
+
+  /* Portada */
+  .tt-cover {
+    position: absolute; inset: 0;
+    cursor: pointer; z-index: 10;
+    transition: opacity .3s;
+  }
+  .tt-cover img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+  }
+  .tt-cover:hover img { transform: scale(1.04); }
+
+  /* Icono TikTok esquina */
+  .tt-cover::before {
+    content: '';
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    background: #000;
+    border-radius: 6px;
+    z-index: 11;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff0050' d='M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.73a4.85 4.85 0 01-1.01-.04z'/%3E%3C/svg%3E");
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,.4);
+  }
+
+  .tt-play-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 50%, rgba(0,0,0,.08) 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+    transition: background .3s;
+  }
+  .tt-cover:hover .tt-play-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.3) 50%, rgba(0,0,0,.12) 100%);
+  }
+  .tt-play-circle {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: rgba(255,255,255,.95);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,.5);
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .tt-cover:hover .tt-play-circle { transform: scale(1.12); }
+  .tt-play-circle i { font-size: 20px; color: #ff0050; margin-left: 3px; }
+  .tt-play-overlay span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: #fff; letter-spacing: 1px; text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0,0,0,.8);
+  }
+
+  /* Footer tarjeta */
+  .tt-footer {
+    padding: 16px 18px 18px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .tt-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(0,194,179,.1);
+    border: 1px solid rgba(0,194,179,.25);
+    color: #00C2B3;
+    padding: 4px 12px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    width: fit-content;
+  }
+  .tt-badge i { font-size: 9px; }
+  .tt-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,.75); line-height: 1.55;
+  }
+  .tt-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    background: linear-gradient(135deg, #ff0050 0%, #ff3c6e 50%, #00f2ea 100%);
+    color: #fff;
+    padding: 11px 18px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none;
+    transition: all .3s;
+    box-shadow: 0 4px 16px rgba(255,0,80,.25);
+    width: 100%;
+  }
+  .tt-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,0,80,.35);
+    opacity: .95;
+  }
+
+  /* CTA final */
+  .tiktok-cta {
+    text-align: center;
+    margin-top: 52px;
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+  }
+  .tiktok-cta p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 600; color: rgba(255,255,255,.6);
+    letter-spacing: .3px;
+  }
+  .tiktok-cta p em { color: #00C2B3; font-style: italic; }
+  .tiktok-cta-btns {
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+  }
+  .btn-follow-tt {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, #ff0050, #ff3c6e);
+    color: #fff; padding: 14px 28px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration: none;
+    transition: all .3s;
+    box-shadow: 0 6px 24px rgba(255,0,80,.3);
+  }
+  .btn-follow-tt:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(255,0,80,.4);
+  }
+  .btn-wsp-tt {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #00C2B3; color: #fff;
+    padding: 14px 28px; border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration: none;
+    transition: all .3s;
+  }
+  .btn-wsp-tt:hover {
+    background: #009E91; transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media(max-width:860px) {
+    .tiktok-grid { grid-template-columns: repeat(2, 1fr); max-width: 600px; }
+    .tt-card:nth-child(3) { display: none; }
+  }
+  @media(max-width:520px) {
+    .tiktok-grid { grid-template-columns: 1fr; max-width: 320px; }
+    .tt-card:nth-child(3) { display: flex; }
+    .tiktok-cta-btns { flex-direction: column; width: 100%; }
+    .btn-follow-tt, .btn-wsp-tt { justify-content: center; }
+  }
+</style>
+
+<!-- SECCIÓN TIKTOK -->
+<section class="tiktok-section" id="tiktok">
+
+  <div class="tiktok-header">
+    <div class="tiktok-eyebrow">
+      <div class="tt-dot"></div>
+      Síguenos en TikTok
+    </div>
+    <h2 class="tiktok-title">
+      Mira los resultados<br>
+      en <em>video real</em>
+    </h2>
+    <p class="tiktok-sub">
+      Personas que ya lo usaron y lo recomiendan.
+      Mira por qué todo el mundo está hablando de este suero.
+    </p>
+  </div>
+
+  <div class="tiktok-grid">
+
+    <!-- VIDEO 1 -->
+    <div class="tt-card">
+      <div class="tt-embed">
+        <div class="tt-cover" id="cover1" onclick="playTT('cover1','frame1')">
+          <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/reels%201.png" alt="Resultado cejas y pestañas"/>
+          <div class="tt-play-overlay">
+            <div class="tt-play-circle"><i class="fas fa-play"></i></div>
+            <span>Ver video</span>
+          </div>
+        </div>
+        <iframe
+          id="frame1"
+          src=""
+          data-src="https://www.tiktok.com/embed/v2/7593353265128000788"
+          allowfullscreen
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+          style="display:none"
+        ></iframe>
+      </div>
+      <div class="tt-footer">
+        <div class="tt-badge"><i class="fas fa-thumbs-up"></i> Lo recomienda</div>
+        <div class="tt-desc">Sofía Maldonado comparte por qué recomienda este suero para cejas y pestañas</div>
+        <a href="https://www.tiktok.com/@sofiamaldonadoaj/video/7593353265128000788" target="_blank" rel="noopener" class="tt-btn">
+          <i class="fab fa-tiktok"></i> Ver en TikTok
+        </a>
+      </div>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="tt-card">
+      <div class="tt-embed">
+        <div class="tt-cover" id="cover2" onclick="playTT('cover2','frame2')">
+          <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/reels2.png" alt="Resultado pestañas"/>
+          <div class="tt-play-overlay">
+            <div class="tt-play-circle"><i class="fas fa-play"></i></div>
+            <span>Ver video</span>
+          </div>
+        </div>
+        <iframe
+          id="frame2"
+          src=""
+          data-src="https://www.tiktok.com/embed/v2/7572309040731032840"
+          allowfullscreen
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+          style="display:none"
+        ></iframe>
+      </div>
+      <div class="tt-footer">
+        <div class="tt-badge"><i class="fas fa-user-md"></i> Especialista recomienda</div>
+        <div class="tt-desc">La Dra. Dayana Quintero explica por qué recomienda este suero y sus beneficios reales</div>
+        <a href="https://www.tiktok.com/@dra_dayanaquintero/video/7572309040731032840" target="_blank" rel="noopener" class="tt-btn">
+          <i class="fab fa-tiktok"></i> Ver en TikTok
+        </a>
+      </div>
+    </div>
+
+    <!-- VIDEO 3 -->
+    <div class="tt-card">
+      <div class="tt-embed">
+        <div class="tt-cover" id="cover3" onclick="playTT('cover3','frame3')">
+          <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/reels3.png" alt="Resultado mirada"/>
+          <div class="tt-play-overlay">
+            <div class="tt-play-circle"><i class="fas fa-play"></i></div>
+            <span>Ver video</span>
+          </div>
+        </div>
+        <iframe
+          id="frame3"
+          src=""
+          data-src="https://www.tiktok.com/embed/v2/7329366861479480582"
+          allowfullscreen
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+          style="display:none"
+        ></iframe>
+      </div>
+      <div class="tt-footer">
+        <div class="tt-badge"><i class="fas fa-heart"></i> Lo recomienda</div>
+        <div class="tt-desc">Mon Cantero muestra los resultados y cuenta por qué no para de recomendarlo</div>
+        <a href="https://www.tiktok.com/@mon.cantero/video/7329366861479480582" target="_blank" rel="noopener" class="tt-btn">
+          <i class="fab fa-tiktok"></i> Ver en TikTok
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="tiktok-cta">
+    <p>¿Ya viste por qué tanto lo recomiendan?<br>Pide el tuyo ahora con <em>envío gratis</em></p>
+    <div class="tiktok-cta-btns">
+      <a href="https://wa.me/56941105441?text=Hola!%20Vi%20los%20videos%20de%20TikTok%20y%20quiero%20pedir%20el%20suero"
+         class="btn-wsp-tt">
+        <i class="fab fa-whatsapp"></i> Pedir ahora
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<script>
+function playTT(coverId, frameId) {
+  const cover = document.getElementById(coverId);
+  const frame = document.getElementById(frameId);
+  if (!cover || !frame) return;
+  frame.src = frame.getAttribute('data-src');
+  cover.style.transition = 'opacity .3s';
+  cover.style.opacity = '0';
+  setTimeout(() => {
+    cover.style.display = 'none';
+    frame.style.display = 'block';
+    frame.style.position = 'absolute';
+    frame.style.inset = '0';
+    frame.style.width = '100%';
+    frame.style.height = '100%';
+    frame.style.border = 'none';
+  }, 300);
+}
+</script>
