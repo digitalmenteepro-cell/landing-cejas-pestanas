@@ -11,7 +11,6 @@
     background: #0a0a0a;
   }
 
-  /* ── IMAGEN FONDO ── */
   .hero-bg-img {
     position: absolute;
     inset: 0;
@@ -29,7 +28,6 @@
   .hero-bg-mobile  { display: none; }
   .hero-bg-desktop { display: block; }
 
-  /* ── OVERLAYS ── */
   .hero-overlay {
     position: absolute;
     inset: 0;
@@ -54,7 +52,6 @@
     );
   }
 
-  /* ── CONTENIDO ── */
   .hero-content {
     position: relative;
     z-index: 10;
@@ -65,7 +62,6 @@
     max-width: 700px;
   }
 
-  /* Pill */
   .hero-pill {
     display: inline-flex;
     align-items: center;
@@ -98,7 +94,6 @@
     50%{transform:scale(1.6);opacity:.5}
   }
 
-  /* Título */
   .hero-h1 {
     font-family: 'Cormorant Garamond', serif;
     margin-bottom: 20px;
@@ -140,7 +135,6 @@
     text-shadow: 0 2px 20px rgba(0,0,0,.7);
   }
 
-  /* Subtítulo */
   .hero-sub {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
@@ -156,7 +150,6 @@
   }
   .hero-sub strong { color: #00C2B3; font-weight: 600; }
 
-  /* Botones */
   .hero-btns {
     display: flex;
     gap: 12px;
@@ -181,10 +174,7 @@
     text-decoration: none;
     transition: all .3s;
   }
-  .btn-wsp-hero:hover {
-    background: #009E91;
-    transform: translateY(-2px);
-  }
+  .btn-wsp-hero:hover { background: #009E91; transform: translateY(-2px); }
   .btn-ghost-hero {
     display: inline-flex;
     align-items: center;
@@ -202,13 +192,8 @@
     border: 1px solid rgba(255,255,255,.35);
     transition: all .3s;
   }
-  .btn-ghost-hero:hover {
-    border-color: #00C2B3;
-    color: #00C2B3;
-    transform: translateY(-2px);
-  }
+  .btn-ghost-hero:hover { border-color: #00C2B3; color: #00C2B3; transform: translateY(-2px); }
 
-  /* Stats */
   .hero-stats {
     display: flex;
     gap: 0;
@@ -229,25 +214,10 @@
     gap: 3px;
   }
   .h-stat:last-child { border-right: none; }
-  .h-stat-n {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: #fff;
-    line-height: 1;
-  }
+  .h-stat-n { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #fff; line-height: 1; }
   .h-stat-n b { color: #00C2B3; }
-  .h-stat-l {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 9px;
-    font-weight: 500;
-    color: rgba(255,255,255,.45);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    white-space: nowrap;
-  }
+  .h-stat-l { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 500; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
 
-  /* Partículas */
   .hero-ptcl { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
   .p { position: absolute; border-radius: 50%; animation: ptUp linear infinite; }
   .p:nth-child(1){width:2px;height:2px;left:10%;background:rgba(0,194,179,.4);animation-duration:14s;animation-delay:0s}
@@ -256,106 +226,53 @@
   .p:nth-child(4){width:3px;height:3px;left:74%;background:rgba(0,194,179,.2);animation-duration:16s;animation-delay:1s}
   .p:nth-child(5){width:4px;height:4px;left:90%;background:rgba(0,194,179,.15);animation-duration:20s;animation-delay:3s}
   @keyframes ptUp {
-    0%  { transform:translateY(110vh);opacity:0 }
-    8%  { opacity:1 }
-    92% { opacity:.6 }
-    100%{ transform:translateY(-10vh);opacity:0 }
+    0%{transform:translateY(110vh);opacity:0} 8%{opacity:1} 92%{opacity:.6} 100%{transform:translateY(-10vh);opacity:0}
   }
 
-  /* Scroll indicator */
-  .hero-scroll {
-    position: absolute; bottom: 28px; right: 6%;
-    z-index: 20; display: flex; flex-direction: column;
-    align-items: center; gap: 8px; opacity: 0;
-    animation: fadeIn .6s ease 1.8s forwards;
-  }
-  .scroll-bar {
-    width: 1px; height: 50px;
-    background: rgba(255,255,255,.15); border-radius: 2px;
-    overflow: hidden; position: relative;
-  }
-  .scroll-bar::after {
-    content: ''; position: absolute; top: 0; left: 0;
-    width: 100%; height: 40%;
-    background: linear-gradient(to bottom, #00C2B3, transparent);
-    border-radius: 2px; animation: scrollBar 2s ease-in-out infinite;
-  }
-  @keyframes scrollBar {
-    0%  { transform: translateY(-100%); }
-    100%{ transform: translateY(300%); }
-  }
-  .scroll-lbl {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 8px; font-weight: 500;
-    letter-spacing: 2.5px; text-transform: uppercase;
-    color: rgba(255,255,255,.3); writing-mode: vertical-rl;
-  }
+  .hero-scroll { position: absolute; bottom: 28px; right: 6%; z-index: 20; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeIn .6s ease 1.8s forwards; }
+  .scroll-bar { width: 1px; height: 50px; background: rgba(255,255,255,.15); border-radius: 2px; overflow: hidden; position: relative; }
+  .scroll-bar::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to bottom, #00C2B3, transparent); border-radius: 2px; animation: scrollBar 2s ease-in-out infinite; }
+  @keyframes scrollBar { 0%{transform:translateY(-100%)} 100%{transform:translateY(300%)} }
+  .scroll-lbl { font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.3); writing-mode: vertical-rl; }
 
-  /* Animaciones */
-  @keyframes fadeSlide {
-    from { opacity:0; transform:translateY(20px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-  @keyframes fadeIn { to { opacity:1; } }
+  @keyframes fadeSlide { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn { to{opacity:1} }
 
-  /* ── TABLET ── */
   @media(max-width:900px) {
-    .hero-scroll { display: none; }
-    .hero-overlay-left { display: none; }
-    .hero-content { max-width: 100%; padding: 0 5% 60px; }
-    .hero-stats { width: 100%; }
-    .h-stat { flex: 1; padding: 12px 10px; }
+    .hero-scroll{display:none} .hero-overlay-left{display:none}
+    .hero-content{max-width:100%;padding:0 5% 60px}
+    .hero-stats{width:100%} .h-stat{flex:1;padding:12px 10px}
   }
-
-  /* ── MÓVIL ── */
   @media(max-width:540px) {
-    .hero-bg-desktop { display: none; }
-    .hero-bg-mobile  { display: block; object-position: center top; }
-    .hero { min-height: 100svh; align-items: flex-end; }
-    .hero-overlay {
-      background: linear-gradient(
-        to top,
-        rgba(4,4,4,.98) 0%,
-        rgba(4,4,4,.92) 35%,
-        rgba(4,4,4,.58) 60%,
-        rgba(4,4,4,.18) 80%,
-        rgba(4,4,4,.04) 100%
-      );
-    }
-    .hero-overlay-mobile {
-      display: block;
-      position: absolute;
-      inset: 0; z-index: 2;
-      background: rgba(4,4,4,.22);
-    }
-    .hero-content { padding: 0 5% 48px; }
-    .hero-h1 .l1 { font-size: 22px; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.9); }
-    .hero-h1 .l2 { font-size: 52px; text-shadow: 0 3px 22px rgba(0,0,0,.9); }
-    .hero-h1 .l3 { font-size: 20px; color: rgba(255,255,255,.9); text-shadow: 0 2px 18px rgba(0,0,0,.9); }
-    .hero-sub { font-size: 13px; color: rgba(255,255,255,.88); }
-    .hero-btns { flex-direction: column; gap: 10px; }
-    .btn-wsp-hero, .btn-ghost-hero { width: 100%; justify-content: center; }
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      background: rgba(0,0,0,.65);
-    }
-    .h-stat { border-right: none !important; border-bottom: 1px solid rgba(0,194,179,.12); }
-    .h-stat:nth-child(odd) { border-right: 1px solid rgba(0,194,179,.12) !important; }
-    .h-stat:nth-last-child(-n+2) { border-bottom: none; }
-    .h-stat-n { font-size: 18px; }
+    .hero-bg-desktop{display:none} .hero-bg-mobile{display:block;object-position:center top}
+    .hero{min-height:100svh;align-items:flex-end}
+    .hero-overlay{background:linear-gradient(to top,rgba(4,4,4,.98) 0%,rgba(4,4,4,.92) 35%,rgba(4,4,4,.58) 60%,rgba(4,4,4,.18) 80%,rgba(4,4,4,.04) 100%)}
+    .hero-overlay-mobile{display:block;position:absolute;inset:0;z-index:2;background:rgba(4,4,4,.22)}
+    .hero-content{padding:0 5% 48px}
+    .hero-h1 .l1{font-size:22px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.9)}
+    .hero-h1 .l2{font-size:52px;text-shadow:0 3px 22px rgba(0,0,0,.9)}
+    .hero-h1 .l3{font-size:20px;color:rgba(255,255,255,.9);text-shadow:0 2px 18px rgba(0,0,0,.9)}
+    .hero-sub{font-size:13px;color:rgba(255,255,255,.88)}
+    .hero-btns{flex-direction:column;gap:10px}
+    .btn-wsp-hero,.btn-ghost-hero{width:100%;justify-content:center}
+    .hero-stats{display:grid;grid-template-columns:1fr 1fr;width:100%;background:rgba(0,0,0,.65)}
+    .h-stat{border-right:none !important;border-bottom:1px solid rgba(0,194,179,.12)}
+    .h-stat:nth-child(odd){border-right:1px solid rgba(0,194,179,.12) !important}
+    .h-stat:nth-last-child(-n+2){border-bottom:none}
+    .h-stat-n{font-size:18px}
   }
 </style>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
 
+  <!-- ✅ IMAGEN DESKTOP ACTUALIZADA -->
   <img
     class="hero-bg-img hero-bg-desktop"
-    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20original.png"
+    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png"
     alt="Cejas y Pestañas — Suero de crecimiento"
   />
+  <!-- imagen móvil sin cambios -->
   <img
     class="hero-bg-img hero-bg-mobile"
     src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20para%20movil.png"
@@ -377,23 +294,17 @@
   </div>
 
   <div class="hero-content">
-
-    <div class="hero-pill">
-      Fórmula avanzada · Resultado garantizado
-    </div>
-
+    <div class="hero-pill">Fórmula avanzada · Resultado garantizado</div>
     <h1 class="hero-h1">
       <span class="l1">Despierta el poder de</span>
       <span class="l2">tus <em>cejas</em></span>
       <span class="l3">y pestañas naturales</span>
     </h1>
-
     <p class="hero-sub">
       El suero que transforma tu mirada desde adentro.<br>
       <strong>Más densidad. Más largo. Más tú.</strong><br>
       Envío gratis a todo Chile · Pagas al recibir.
     </p>
-
     <div class="hero-btns">
       <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero%20para%20cejas%20y%20pesta%C3%B1as" class="btn-wsp-hero">
         <i class="fab fa-whatsapp" style="font-size:16px"></i> Quiero el mío
@@ -402,26 +313,12 @@
         <i class="fas fa-arrow-down" style="font-size:11px"></i> Ver resultados
       </a>
     </div>
-
     <div class="hero-stats">
-      <div class="h-stat">
-        <div class="h-stat-n">5<b>k+</b></div>
-        <div class="h-stat-l">Clientas felices</div>
-      </div>
-      <div class="h-stat">
-        <div class="h-stat-n">7<b>días</b></div>
-        <div class="h-stat-l">Primeros resultados</div>
-      </div>
-      <div class="h-stat">
-        <div class="h-stat-n">0<b>$</b></div>
-        <div class="h-stat-l">Costo de envío</div>
-      </div>
-      <div class="h-stat">
-        <div class="h-stat-n">100<b>%</b></div>
-        <div class="h-stat-l">Pago al recibir</div>
-      </div>
+      <div class="h-stat"><div class="h-stat-n">5<b>k+</b></div><div class="h-stat-l">Clientas felices</div></div>
+      <div class="h-stat"><div class="h-stat-n">7<b>días</b></div><div class="h-stat-l">Primeros resultados</div></div>
+      <div class="h-stat"><div class="h-stat-n">0<b>$</b></div><div class="h-stat-l">Costo de envío</div></div>
+      <div class="h-stat"><div class="h-stat-n">100<b>%</b></div><div class="h-stat-l">Pago al recibir</div></div>
     </div>
-
   </div>
 </section>
 
