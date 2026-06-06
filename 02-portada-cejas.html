@@ -247,34 +247,6 @@
     white-space: nowrap;
   }
 
-  /* Badges flotantes desktop */
-  .f-badge {
-    position: absolute;
-    z-index: 15;
-    background: rgba(255,255,255,.96);
-    backdrop-filter: blur(14px);
-    border-radius: 2px;
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 8px 28px rgba(0,0,0,.18);
-    border: 1px solid rgba(255,255,255,.7);
-    opacity: 0;
-    animation: popBadge .5s cubic-bezier(.34,1.56,.64,1) forwards;
-  }
-  .f-badge-icon {
-    width: 34px; height: 34px;
-    border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; flex-shrink: 0;
-  }
-  .f-badge-t { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; color: #111; line-height: 1.2; }
-  .f-badge-s { font-family: 'Montserrat', sans-serif; font-size: 10px; color: #888; letter-spacing: .3px; }
-  .fb1 { top: 16%; right: 5%; animation-delay: 1.0s; }
-  .fb2 { top: 44%; right: 5%; animation-delay: 1.25s; }
-  .fb3 { bottom: 18%; right: 5%; animation-delay: 1.5s; }
-
   /* Partículas */
   .hero-ptcl { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
   .p { position: absolute; border-radius: 50%; animation: ptUp linear infinite; }
@@ -324,15 +296,10 @@
     from { opacity:0; transform:translateY(20px); }
     to   { opacity:1; transform:translateY(0); }
   }
-  @keyframes popBadge {
-    from { opacity:0; transform:scale(.75) translateX(12px); }
-    to   { opacity:1; transform:scale(1) translateX(0); }
-  }
   @keyframes fadeIn { to { opacity:1; } }
 
   /* ── TABLET ── */
   @media(max-width:900px) {
-    .f-badge { display: none; }
     .hero-scroll { display: none; }
     .hero-overlay-left { display: none; }
     .hero-content { max-width: 100%; padding: 0 5% 60px; }
@@ -391,7 +358,7 @@
   />
   <img
     class="hero-bg-img hero-bg-mobile"
-    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20original.png"
+    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20para%20movil.png"
     alt="Cejas y Pestañas — Suero de crecimiento"
   />
 
@@ -402,35 +369,6 @@
   <div class="hero-ptcl">
     <div class="p"></div><div class="p"></div><div class="p"></div>
     <div class="p"></div><div class="p"></div>
-  </div>
-
-  <!-- Badges flotantes desktop -->
-  <div class="f-badge fb1">
-    <div class="f-badge-icon" style="background:rgba(0,194,179,.1)">
-      <i class="fas fa-leaf" style="color:#00C2B3"></i>
-    </div>
-    <div>
-      <div class="f-badge-t">100% Natural</div>
-      <div class="f-badge-s">Sin químicos agresivos</div>
-    </div>
-  </div>
-  <div class="f-badge fb2">
-    <div class="f-badge-icon" style="background:rgba(0,194,179,.1)">
-      <i class="fas fa-eye" style="color:#00C2B3"></i>
-    </div>
-    <div>
-      <div class="f-badge-t">Resultados visibles</div>
-      <div class="f-badge-s">Desde la 1ª semana</div>
-    </div>
-  </div>
-  <div class="f-badge fb3">
-    <div class="f-badge-icon" style="background:rgba(0,194,179,.1)">
-      <i class="fas fa-truck" style="color:#00C2B3"></i>
-    </div>
-    <div>
-      <div class="f-badge-t">Envío gratis</div>
-      <div class="f-badge-s">Pagas al recibir</div>
-    </div>
   </div>
 
   <div class="hero-scroll">
