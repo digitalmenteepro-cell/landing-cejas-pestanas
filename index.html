@@ -198,8 +198,9 @@
 </style>
 
 <section class="hero" id="inicio">
-  <img class="hero-bg-img hero-bg-desktop" src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png" alt="Cejas y Pestañas — Suero de crecimiento"/>
-  <img class="hero-bg-img hero-bg-mobile"  src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20para%20movil.png" alt="Cejas y Pestañas — Suero de crecimiento"/>
+  <img class="hero-bg-img hero-bg-desktop" src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20celular.png" alt="Cejas y Pestañas — Suero de crecimiento"/>
+  <!-- ✅ CAMBIO 02: imagen móvil actualizada -->
+  <img class="hero-bg-img hero-bg-mobile" src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20celular.png" alt="Cejas y Pestañas — Suero de crecimiento"/>
   <div class="hero-overlay"></div><div class="hero-overlay-left"></div>
   <div class="hero-overlay-mobile" style="display:none"></div>
   <div class="hero-ptcl"><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div></div>
@@ -368,10 +369,11 @@
 </style>
 
 <section class="tiktok-section" id="tiktok">
+  <!-- ✅ CAMBIO 07: eyebrow actualizado, sin "síguenos en TikTok" -->
   <div class="tiktok-header">
-    <div class="tiktok-eyebrow"><div class="tt-dot"></div> Síguenos en TikTok</div>
+    <div class="tiktok-eyebrow"><div class="tt-dot"></div> Videos reales · Resultados reales</div>
     <h2 class="tiktok-title">Mira los resultados<br>en <em>video real</em></h2>
-    <p class="tiktok-sub">Personas que ya lo usaron y lo recomiendan. Mira por qué todo el mundo está hablando de este suero.</p>
+    <p class="tiktok-sub">Personas reales que ya lo usaron y lo recomiendan. Mira por qué todo el mundo está hablando de este suero.</p>
   </div>
   <div class="tiktok-grid">
     <div class="tt-card"><div class="tt-embed"><div class="tt-cover" id="cover1" onclick="playTT('cover1','frame1')"><img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/reels%201.png" alt=""/><div class="tt-play-overlay"><div class="tt-play-circle"><i class="fas fa-play"></i></div><span>Ver video</span></div></div><iframe id="frame1" src="" data-src="https://www.tiktok.com/embed/v2/7593353265128000788" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" style="display:none"></iframe></div><div class="tt-footer"><div class="tt-badge"><i class="fas fa-thumbs-up"></i> Lo recomienda</div><div class="tt-desc">Sofía Maldonado comparte por qué recomienda este suero para cejas y pestañas</div><a href="https://www.tiktok.com/@sofiamaldonadoaj/video/7593353265128000788" target="_blank" rel="noopener" class="tt-btn"><i class="fab fa-tiktok"></i> Ver en TikTok</a></div></div>
@@ -500,10 +502,9 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
 <script>function changeImg(thumb,src){document.getElementById('mainProductImg').src=src;document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));thumb.classList.add('active');}</script>
 
 <!-- ========================================================
-     04 — BANNER + BENEFICIOS  (con fix móvil)
+     04 — BANNER + BENEFICIOS
      ======================================================== -->
 <style>
-  /* ── DESKTOP ── */
   .banner-familia { width:100%; height:560px; overflow:hidden; position:relative; }
   .banner-familia-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block; transform:scale(1.04); animation:bannerZoom 9s ease-in-out infinite alternate; }
   @keyframes bannerZoom { from{transform:scale(1.04)} to{transform:scale(1.0)} }
@@ -526,8 +527,6 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
   .banner-stat-pill { display:flex; align-items:center; gap:8px; background:rgba(0,0,0,.65); backdrop-filter:blur(14px); border:1px solid rgba(0,194,179,.25); border-radius:2px; padding:9px 16px; }
   .banner-stat-pill i { color:#00C2B3; font-size:12px; }
   .banner-stat-pill span { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; color:#fff; white-space:nowrap; letter-spacing:.5px; }
-
-  /* ── BENEFICIOS ── */
   .beneficios { background:#F8F8F6; padding:80px 5%; }
   .ben-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:44px; }
   .ben-card { background:#fff; border:1px solid #E8E8E6; border-radius:2px; overflow:hidden; transition:all .3s; box-shadow:0 2px 10px rgba(0,0,0,.04); display:flex; flex-direction:column; }
@@ -542,8 +541,6 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
   .ben-card:hover .ben-body { border-top-color:#00C2B3; }
   .ben-body h3 { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; color:#0A0A0A; margin:0; letter-spacing:.3px; text-transform:uppercase; }
   .ben-body p { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:300; color:#777; line-height:1.65; margin:0; }
-
-  /* ── MÓVIL: imagen completa arriba, texto abajo ── */
   @media(max-width:768px) {
     .banner-familia { height:auto; display:flex; flex-direction:column; background:#0a0a0a; }
     .banner-familia-bg { position:relative; inset:auto; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; object-position:center center; display:block; transform:none; animation:none; }
@@ -643,6 +640,7 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
   .btn-wsp-lg{background:#00C2B3;color:#fff;padding:17px 36px;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;position:relative;overflow:hidden}
   .btn-wsp-lg:hover{transform:translateY(-2px)}
   .btn-wsp-lg .wsp-logo{width:20px;height:20px;object-fit:contain;filter:brightness(0) invert(1)}
+  .btn-wsp-lg span,.btn-wsp-lg img{position:relative;z-index:1}
   .cta-trust{margin-top:36px;display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
   .cta-trust span{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:400;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:6px;letter-spacing:.5px}
   .cta-trust span i{color:#00C2B3;font-size:12px}
@@ -668,7 +666,8 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
   .wa-float{position:fixed;bottom:24px;right:24px;z-index:900}
   .wa-btn-float{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .3s;position:relative}
   .wa-btn-float:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(37,211,102,.6)}
-  .wa-btn-float img{width:30px;height:30px;object-fit:contain;filter:brightness(0) invert(1);position:relative;z-index:1}
+  /* ✅ CAMBIO 08: nuevo logo WSP flotante */
+  .wa-btn-float img{width:38px;height:38px;object-fit:contain;position:relative;z-index:1;border-radius:50%}
   .wa-pulse{position:absolute;inset:-5px;border-radius:50%;background:rgba(37,211,102,.25);animation:waPulse 2.2s ease-in-out infinite}
   .wa-tooltip{position:absolute;right:70px;bottom:50%;transform:translateY(50%);background:#fff;color:#0A0A0A;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.5px;padding:8px 14px;border-radius:2px;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.12);opacity:0;pointer-events:none;transition:opacity .3s}
   .wa-tooltip::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-right:none;border-left-color:#fff}
@@ -699,9 +698,9 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
     <div>
       <div class="foot-logo"><a href="#inicio"><img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/Logo.png" alt="Logo"/></a></div>
       <p class="foot-desc">Suero intensivo de crecimiento para cejas y pestañas. Resultados reales desde la primera semana.</p>
+      <!-- ✅ CAMBIO 08: se quitó TikTok, solo WhatsApp -->
       <div class="foot-social">
         <a href="https://wa.me/56941105441" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@sofiamaldonadoaj" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
       </div>
     </div>
     <div class="foot-contact">
@@ -718,11 +717,12 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
   </div>
 </footer>
 
+<!-- ✅ CAMBIO 08: botón flotante con nuevo logo .avif -->
 <div class="wa-float">
   <div class="wa-tooltip">¡Escríbenos ahora!</div>
   <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero%20para%20cejas%20y%20pesta%C3%B1as" class="wa-btn-float" target="_blank" rel="noopener" aria-label="WhatsApp">
     <div class="wa-pulse"></div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"/>
+    <img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/icon-llamada-whatsapp-psd-editable_314999-3666.avif" alt="WhatsApp"/>
   </a>
 </div>
 
