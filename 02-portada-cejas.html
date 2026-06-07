@@ -25,6 +25,7 @@
   }
   @keyframes zoomOut { to { transform: scale(1); } }
 
+  /* Desktop: cuadrada3 visible, móvil oculta */
   .hero-bg-mobile  { display: none; }
   .hero-bg-desktop { display: block; }
 
@@ -238,16 +239,31 @@
   @keyframes fadeSlide { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeIn { to{opacity:1} }
 
+  /* ── TABLET ── */
   @media(max-width:900px) {
-    .hero-scroll{display:none} .hero-overlay-left{display:none}
+    .hero-scroll{display:none}
+    .hero-overlay-left{display:none}
     .hero-content{max-width:100%;padding:0 5% 60px}
-    .hero-stats{width:100%} .h-stat{flex:1;padding:12px 10px}
+    .hero-stats{width:100%}
+    .h-stat{flex:1;padding:12px 10px}
   }
+
+  /* ── MÓVIL: ≤540px → ocultar desktop, mostrar móvil ── */
   @media(max-width:540px) {
-    .hero-bg-desktop{display:none} .hero-bg-mobile{display:block;object-position:center top}
-    .hero{min-height:100svh;align-items:flex-end}
-    .hero-overlay{background:linear-gradient(to top,rgba(4,4,4,.98) 0%,rgba(4,4,4,.92) 35%,rgba(4,4,4,.58) 60%,rgba(4,4,4,.18) 80%,rgba(4,4,4,.04) 100%)}
-    .hero-overlay-mobile{display:block;position:absolute;inset:0;z-index:2;background:rgba(4,4,4,.22)}
+    .hero-bg-desktop { display: none; }
+    .hero-bg-mobile  { display: block; object-position: center top; }
+
+    .hero { min-height: 100svh; align-items: flex-end; }
+    .hero-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(4,4,4,.98) 0%,
+        rgba(4,4,4,.92) 35%,
+        rgba(4,4,4,.58) 60%,
+        rgba(4,4,4,.18) 80%,
+        rgba(4,4,4,.04) 100%
+      );
+    }
     .hero-content{padding:0 5% 48px}
     .hero-h1 .l1{font-size:22px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.9)}
     .hero-h1 .l2{font-size:52px;text-shadow:0 3px 22px rgba(0,0,0,.9)}
@@ -255,7 +271,12 @@
     .hero-sub{font-size:13px;color:rgba(255,255,255,.88)}
     .hero-btns{flex-direction:column;gap:10px}
     .btn-wsp-hero,.btn-ghost-hero{width:100%;justify-content:center}
-    .hero-stats{display:grid;grid-template-columns:1fr 1fr;width:100%;background:rgba(0,0,0,.65)}
+    .hero-stats{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      width:100%;
+      background:rgba(0,0,0,.65)
+    }
     .h-stat{border-right:none !important;border-bottom:1px solid rgba(0,194,179,.12)}
     .h-stat:nth-child(odd){border-right:1px solid rgba(0,194,179,.12) !important}
     .h-stat:nth-last-child(-n+2){border-bottom:none}
@@ -266,22 +287,22 @@
 <!-- HERO -->
 <section class="hero" id="inicio">
 
-  <!-- ✅ IMAGEN DESKTOP ACTUALIZADA -->
+  <!-- DESKTOP: imagen cuadrada, se ve en pantallas > 540px -->
   <img
     class="hero-bg-img hero-bg-desktop"
-    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20celular.png"
+    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png"
     alt="Cejas y Pestañas — Suero de crecimiento"
   />
-  <!-- imagen móvil sin cambios -->
+
+  <!-- MÓVIL: imagen alargada/vertical, se ve en pantallas ≤ 540px -->
   <img
     class="hero-bg-img hero-bg-mobile"
-    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20para%20movil.png"
+    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20celular.png"
     alt="Cejas y Pestañas — Suero de crecimiento"
   />
 
   <div class="hero-overlay"></div>
   <div class="hero-overlay-left"></div>
-  <div class="hero-overlay-mobile" style="display:none"></div>
 
   <div class="hero-ptcl">
     <div class="p"></div><div class="p"></div><div class="p"></div>
@@ -321,10 +342,3 @@
     </div>
   </div>
 </section>
-
-<script>
-  if(window.innerWidth <= 540){
-    const m = document.querySelector('.hero-overlay-mobile');
-    if(m) m.style.display = 'block';
-  }
-</script>
