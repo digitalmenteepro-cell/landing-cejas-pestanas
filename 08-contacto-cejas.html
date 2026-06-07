@@ -109,20 +109,12 @@
     gap: 40px; margin-bottom: 36px;
   }
 
-  /* Logo */
-  .foot-logo {
-    margin-bottom: 16px;
-  }
-  .foot-logo a {
-    display: inline-block;
-    transition: opacity .2s;
-  }
+  .foot-logo { margin-bottom: 16px; }
+  .foot-logo a { display: inline-block; transition: opacity .2s; }
   .foot-logo a:hover { opacity: .8; }
   .foot-logo img {
-    height: 72px;
-    width: auto;
-    object-fit: contain;
-    display: block;
+    height: 72px; width: auto;
+    object-fit: contain; display: block;
   }
 
   .foot-desc {
@@ -169,7 +161,6 @@
   .foot-contact a:hover { color: #00C2B3; }
   .foot-contact a i { color: #00C2B3; width: 16px; font-size: 14px; }
 
-  /* Separador y bottom */
   .foot-bottom {
     border-top: 1px solid rgba(255,255,255,.05);
     padding-top: 20px;
@@ -181,10 +172,7 @@
     font-size: 11px; font-weight: 300;
     color: rgba(255,255,255,.2); letter-spacing: .3px;
   }
-  .foot-bottom a {
-    color: #00C2B3; text-decoration: none;
-    font-weight: 500;
-  }
+  .foot-bottom a { color: #00C2B3; text-decoration: none; font-weight: 500; }
 
   /* ── BOTÓN FLOTANTE WSP ── */
   @keyframes waPulse {
@@ -210,11 +198,12 @@
   }
   .wa-btn-float:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,.6); }
 
+  /* ✅ LOGO WSP ACTUALIZADO */
   .wa-btn-float img {
-    width: 30px; height: 30px;
+    width: 38px; height: 38px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
     position: relative; z-index: 1;
+    border-radius: 50%;
   }
 
   .wa-pulse {
@@ -224,7 +213,6 @@
     animation: waPulse 2.2s ease-in-out infinite;
   }
 
-  /* Tooltip */
   .wa-tooltip {
     position: absolute;
     right: 70px; bottom: 50%;
@@ -252,7 +240,6 @@
   }
   .wa-float:hover .wa-tooltip { opacity: 1; }
 
-  /* Responsive */
   @media(max-width:600px) {
     .foot-grid { grid-template-columns: 1fr; }
     .cta-actions { flex-direction: column; align-items: center; }
@@ -310,12 +297,10 @@
       <p class="foot-desc">
         Suero intensivo de crecimiento para cejas y pestañas. Resultados reales desde la primera semana.
       </p>
+      <!-- ✅ SOLO WHATSAPP, SE QUITÓ TIKTOK -->
       <div class="foot-social">
         <a href="https://wa.me/56941105441" target="_blank" aria-label="WhatsApp">
           <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://www.tiktok.com/@sofiamaldonadoaj" target="_blank" aria-label="TikTok">
-          <i class="fab fa-tiktok"></i>
         </a>
       </div>
     </div>
@@ -347,7 +332,7 @@
   </div>
 </footer>
 
-<!-- BOTÓN FLOTANTE WHATSAPP -->
+<!-- ✅ BOTÓN FLOTANTE WHATSAPP CON NUEVO LOGO -->
 <div class="wa-float">
   <div class="wa-tooltip">¡Escríbenos ahora!</div>
   <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero%20para%20cejas%20y%20pesta%C3%B1as"
@@ -356,7 +341,7 @@
      aria-label="WhatsApp">
     <div class="wa-pulse"></div>
     <img
-      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/icon-llamada-whatsapp-psd-editable_314999-3666.avif"
       alt="WhatsApp"
     />
   </a>
