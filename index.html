@@ -135,6 +135,7 @@
   .hero { position: relative; width: 100%; min-height: 100vh; overflow: hidden; display: flex; align-items: flex-end; background: #0a0a0a; }
   .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; z-index: 1; transform: scale(1.06); animation: zoomOut 2.2s cubic-bezier(.16,1,.3,1) forwards; }
   @keyframes zoomOut { to { transform: scale(1); } }
+  /* Desktop visible por defecto, móvil oculto */
   .hero-bg-mobile  { display: none; }
   .hero-bg-desktop { display: block; }
   .hero-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to top, rgba(5,5,5,.97) 0%, rgba(5,5,5,.75) 35%, rgba(5,5,5,.28) 65%, rgba(5,5,5,.06) 100%); }
@@ -178,31 +179,41 @@
   @keyframes fadeIn { to{opacity:1} }
   @media(max-width:900px) { .hero-scroll{display:none} .hero-overlay-left{display:none} .hero-content{max-width:100%;padding:0 5% 60px} .hero-stats{width:100%} .h-stat{flex:1;padding:12px 10px} }
   @media(max-width:540px) {
-    .hero-bg-desktop{display:none} .hero-bg-mobile{display:block;object-position:center top}
-    .hero{min-height:100svh;align-items:flex-end}
-    .hero-overlay{background:linear-gradient(to top,rgba(4,4,4,.98) 0%,rgba(4,4,4,.92) 35%,rgba(4,4,4,.58) 60%,rgba(4,4,4,.18) 80%,rgba(4,4,4,.04) 100%)}
-    .hero-overlay-mobile{display:block;position:absolute;inset:0;z-index:2;background:rgba(4,4,4,.22)}
-    .hero-content{padding:0 5% 48px}
-    .hero-h1 .l1{font-size:22px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.9)}
-    .hero-h1 .l2{font-size:52px;text-shadow:0 3px 22px rgba(0,0,0,.9)}
-    .hero-h1 .l3{font-size:20px;color:rgba(255,255,255,.9);text-shadow:0 2px 18px rgba(0,0,0,.9)}
-    .hero-sub{font-size:13px;color:rgba(255,255,255,.88)}
-    .hero-btns{flex-direction:column;gap:10px}
-    .btn-wsp-hero,.btn-ghost-hero{width:100%;justify-content:center}
-    .hero-stats{display:grid;grid-template-columns:1fr 1fr;width:100%;background:rgba(0,0,0,.65)}
-    .h-stat{border-right:none !important;border-bottom:1px solid rgba(0,194,179,.12)}
-    .h-stat:nth-child(odd){border-right:1px solid rgba(0,194,179,.12) !important}
-    .h-stat:nth-last-child(-n+2){border-bottom:none}
-    .h-stat-n{font-size:18px}
+    /* En móvil: ocultar desktop, mostrar móvil */
+    .hero-bg-desktop { display: none; }
+    .hero-bg-mobile  { display: block; object-position: center top; }
+    .hero { min-height: 100svh; align-items: flex-end; }
+    .hero-overlay { background: linear-gradient(to top, rgba(4,4,4,.98) 0%, rgba(4,4,4,.92) 35%, rgba(4,4,4,.58) 60%, rgba(4,4,4,.18) 80%, rgba(4,4,4,.04) 100%); }
+    .hero-content { padding: 0 5% 48px; }
+    .hero-h1 .l1 { font-size: 22px; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.9); }
+    .hero-h1 .l2 { font-size: 52px; text-shadow: 0 3px 22px rgba(0,0,0,.9); }
+    .hero-h1 .l3 { font-size: 20px; color: rgba(255,255,255,.9); text-shadow: 0 2px 18px rgba(0,0,0,.9); }
+    .hero-sub { font-size: 13px; color: rgba(255,255,255,.88); }
+    .hero-btns { flex-direction: column; gap: 10px; }
+    .btn-wsp-hero, .btn-ghost-hero { width: 100%; justify-content: center; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; width: 100%; background: rgba(0,0,0,.65); }
+    .h-stat { border-right: none !important; border-bottom: 1px solid rgba(0,194,179,.12); }
+    .h-stat:nth-child(odd) { border-right: 1px solid rgba(0,194,179,.12) !important; }
+    .h-stat:nth-last-child(-n+2) { border-bottom: none; }
+    .h-stat-n { font-size: 18px; }
   }
 </style>
 
 <section class="hero" id="inicio">
-  <img class="hero-bg-img hero-bg-desktop" src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20celular.png" alt="Cejas y Pestañas — Suero de crecimiento"/>
-  <!-- ✅ CAMBIO 02: imagen móvil actualizada -->
-  <img class="hero-bg-img hero-bg-mobile" src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20celular.png" alt="Cejas y Pestañas — Suero de crecimiento"/>
-  <div class="hero-overlay"></div><div class="hero-overlay-left"></div>
-  <div class="hero-overlay-mobile" style="display:none"></div>
+  <!-- DESKTOP: imagen cuadrada → pantallas > 540px -->
+  <img
+    class="hero-bg-img hero-bg-desktop"
+    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png"
+    alt="Cejas y Pestañas — Suero de crecimiento"
+  />
+  <!-- MÓVIL: imagen alargada/vertical → pantallas ≤ 540px -->
+  <img
+    class="hero-bg-img hero-bg-mobile"
+    src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20celular.png"
+    alt="Cejas y Pestañas — Suero de crecimiento"
+  />
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-left"></div>
   <div class="hero-ptcl"><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div></div>
   <div class="hero-scroll"><div class="scroll-bar"></div><span class="scroll-lbl">Scroll</span></div>
   <div class="hero-content">
@@ -225,7 +236,6 @@
     </div>
   </div>
 </section>
-<script>if(window.innerWidth<=540){const m=document.querySelector('.hero-overlay-mobile');if(m)m.style.display='block';}</script>
 
 <!-- ========================================================
      03 — PROMO STRIP + OFERTA
@@ -369,7 +379,6 @@
 </style>
 
 <section class="tiktok-section" id="tiktok">
-  <!-- ✅ CAMBIO 07: eyebrow actualizado, sin "síguenos en TikTok" -->
   <div class="tiktok-header">
     <div class="tiktok-eyebrow"><div class="tt-dot"></div> Videos reales · Resultados reales</div>
     <h2 class="tiktok-title">Mira los resultados<br>en <em>video real</em></h2>
@@ -666,7 +675,6 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
   .wa-float{position:fixed;bottom:24px;right:24px;z-index:900}
   .wa-btn-float{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .3s;position:relative}
   .wa-btn-float:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(37,211,102,.6)}
-  /* ✅ CAMBIO 08: nuevo logo WSP flotante */
   .wa-btn-float img{width:38px;height:38px;object-fit:contain;position:relative;z-index:1;border-radius:50%}
   .wa-pulse{position:absolute;inset:-5px;border-radius:50%;background:rgba(37,211,102,.25);animation:waPulse 2.2s ease-in-out infinite}
   .wa-tooltip{position:absolute;right:70px;bottom:50%;transform:translateY(50%);background:#fff;color:#0A0A0A;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.5px;padding:8px 14px;border-radius:2px;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.12);opacity:0;pointer-events:none;transition:opacity .3s}
@@ -698,7 +706,6 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
     <div>
       <div class="foot-logo"><a href="#inicio"><img src="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/Logo.png" alt="Logo"/></a></div>
       <p class="foot-desc">Suero intensivo de crecimiento para cejas y pestañas. Resultados reales desde la primera semana.</p>
-      <!-- ✅ CAMBIO 08: se quitó TikTok, solo WhatsApp -->
       <div class="foot-social">
         <a href="https://wa.me/56941105441" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       </div>
@@ -717,7 +724,6 @@ document.querySelectorAll('.tt-card').forEach(card=>{card.addEventListener('touc
   </div>
 </footer>
 
-<!-- ✅ CAMBIO 08: botón flotante con nuevo logo .avif -->
 <div class="wa-float">
   <div class="wa-tooltip">¡Escríbenos ahora!</div>
   <a href="https://wa.me/56941105441?text=Hola!%20Quiero%20pedir%20el%20suero%20para%20cejas%20y%20pesta%C3%B1as" class="wa-btn-float" target="_blank" rel="noopener" aria-label="WhatsApp">
