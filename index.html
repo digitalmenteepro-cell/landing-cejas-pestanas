@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/cuadrada%203.png" media="(min-width: 541px)" fetchpriority="high">
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/digitalmenteepro-cell/landing-cejas-pestanas/refs/heads/main/img/portada%20celular.png" media="(max-width: 540px)" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Lato:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- ===== Datos estructurados (Schema.org) ===== -->
@@ -386,9 +386,9 @@
   .price-box{background:rgba(0,194,179,.05);border:1px solid rgba(0,194,179,.25);border-radius:2px;padding:22px 24px;display:flex;flex-direction:column;gap:10px}
   .price-original{display:flex;align-items:center;gap:10px}
   .price-original .lbl,.price-oferta-row .lbl{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#999}
-  .price-original .amt{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:500;color:#bbb;text-decoration:line-through}
+  .price-original .amt{font-family:'Lato',sans-serif;font-size:16px;font-weight:500;color:#bbb;text-decoration:line-through}
   .price-oferta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-  .price-oferta-row .amt{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,50px);font-weight:600;color:#111;line-height:1}
+  .price-oferta-row .amt{font-family:'Lato',sans-serif;font-size:clamp(30px,3.4vw,42px);font-weight:700;color:#111;line-height:1;letter-spacing:-.3px}
   .badge-off{background:#00C2B3;color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;padding:6px 12px;border-radius:2px;letter-spacing:.5px}
   .price-sep{height:1px;background:rgba(0,194,179,.2)}
   .price-envio{display:flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:500;color:#555;letter-spacing:.3px}
@@ -416,7 +416,7 @@
   .oferta-phone-wrap .sub{font-family:'Montserrat',sans-serif;font-size:10px;color:#aaa;margin-top:3px;letter-spacing:.5px}
   .btn-oferta-wsp{display:inline-flex;align-items:center;gap:8px;background:rgba(0,194,179,.1);border:1px solid rgba(0,194,179,.3);color:#00A89B;padding:12px 20px;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;white-space:nowrap}
   .btn-oferta-wsp:hover{background:#00C2B3;color:#fff}
-  .price-oferta-row.pack .amt{font-size:clamp(28px,3vw,38px)}
+  .price-oferta-row.pack .amt{font-size:clamp(24px,2.6vw,32px)}
   .badge-off.badge-pack{background:#0A0A0A}
   .btn-oferta-pack{display:inline-flex;align-items:center;gap:9px;background:#0A0A0A;color:#fff;padding:15px 30px;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .3s;width:fit-content}
   .btn-oferta-pack:hover{background:#00C2B3;color:#fff}
@@ -425,7 +425,7 @@
   .price-pack strong{color:#00C2B3;font-weight:700}
   @media(max-width:480px){.btn-oferta-pack{width:100%;justify-content:center}}
   @media(max-width:860px){.oferta-grid{grid-template-columns:1fr}.oferta-img-col{min-height:unset}.oferta-img-col img{object-fit:contain;background:#f9f9f9}.oferta-img-col::after{background:linear-gradient(to bottom,transparent 50%,rgba(255,255,255,.9) 80%,rgba(255,255,255,1) 100%)}.oferta-content{padding:40px 5% 50px}.oferta-contact-box{flex-direction:column;align-items:flex-start}}
-  @media(max-width:480px){.oferta-title{font-size:26px}.price-oferta-row .amt{font-size:38px}.btn-oferta-main{width:100%;justify-content:center}.btn-oferta-wsp{width:100%;justify-content:center}.oferta-contact-box{padding:16px 18px}}
+  @media(max-width:480px){.oferta-title{font-size:26px}.price-oferta-row .amt{font-size:32px}.price-oferta-row.pack .amt{font-size:26px}.btn-oferta-main{width:100%;justify-content:center}.btn-oferta-wsp{width:100%;justify-content:center}.oferta-contact-box{padding:16px 18px}}
 </style>
 
 <div class="promo-strip">
@@ -576,8 +576,8 @@ document.querySelectorAll('.tt-cover').forEach(c=>{c.addEventListener('keydown',
   .product-price-box{background:#0A0A0A;border-radius:2px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .price-left{display:flex;flex-direction:column;gap:4px}
   .price-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35)}
-  .price-old{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,.35);text-decoration:line-through}
-  .price-new{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:600;color:#fff;line-height:1;letter-spacing:-1px}
+  .price-old{font-family:'Lato',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,.35);text-decoration:line-through}
+  .price-new{font-family:'Lato',sans-serif;font-size:40px;font-weight:700;color:#fff;line-height:1;letter-spacing:-.5px}
   .price-new sub{font-size:18px;font-weight:400;vertical-align:super;color:#00C2B3}
   .price-right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
   .price-envio-tag{display:flex;align-items:center;gap:7px;background:rgba(0,194,179,.15);border:1px solid rgba(0,194,179,.3);color:#00C2B3;padding:7px 14px;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.5px;white-space:nowrap}
@@ -599,7 +599,7 @@ document.querySelectorAll('.tt-cover').forEach(c=>{c.addEventListener('keydown',
   .stock-bar-fill{height:100%;width:20%;background:linear-gradient(to right,#ff4444,#ff8888);border-radius:2px;animation:stockFill 1.5s ease-out forwards}
   @keyframes stockFill{from{width:0}to{width:20%}}
   @media(max-width:900px){.product-inner{grid-template-columns:1fr;gap:40px}.ingredient-grid{grid-template-columns:1fr 1fr}.product-price-box{flex-direction:column;align-items:flex-start}.price-right{align-items:flex-start;flex-direction:row;flex-wrap:wrap}}
-  @media(max-width:480px){.product-section{padding:60px 5%}.ingredient-grid{grid-template-columns:1fr}.product-title{font-size:32px}.price-new{font-size:38px}.btn-product-cta{font-size:12px;padding:16px 24px}}
+  @media(max-width:480px){.product-section{padding:60px 5%}.ingredient-grid{grid-template-columns:1fr}.product-title{font-size:32px}.price-new{font-size:34px}.btn-product-cta{font-size:12px;padding:16px 24px}}
 </style>
 
 <section class="product-section" id="producto">
